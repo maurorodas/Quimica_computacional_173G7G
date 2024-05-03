@@ -1,5 +1,11 @@
-<p align="center"><img src="images/ucaldas_logo.png" height="90" style="margin:0px 10px"/></p>
-<center><h1>Curso de Química Computacional <br> Universidad de Caldas</h1></center>
+<table>
+<thead>
+  <tr>
+    <td><img src="images/ucaldas_logo.png" height="90" style="margin:0px 10px"/></td>
+    <td><h1>Curso de Química Computacional <br> Universidad de Caldas</h1></td>
+  </tr>
+</thead>
+</table>
 
 Departamento de Química, Universidad de Caldas, Manizales - Colombia [(UCaldas)](https://www.ucaldas.edu.co/)
 
@@ -21,31 +27,31 @@ El curso y su contenido, incluyendo blocs de notas (notebooks), scripts y códig
 
 Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el entorno Jupyter y puede ser ejecutado en la herramienta libre de computación en la nube **Google Colab** [3].
 
-<table class="tg">
+<table>
 <thead>
   <tr>
-    <th class="tg-c3ow"><span style="font-weight:bold">Tema</span></th>
-    <th class="tg-c3ow"><span style="font-weight:bold">Descripción</span></th>
-    <th class="tg-c3ow"><span style="font-weight:bold">Software y Lenguaje</span></th>
-    <th class="tg-c3ow"><span style="font-weight:bold">Enlace</span></th>
+    <th><span style="font-weight:bold">Tema</span></th>
+    <th><span style="font-weight:bold">Descripción</span></th>
+    <th><span style="font-weight:bold">Software y Lenguaje</span></th>
+    <th><span style="font-weight:bold">Enlace</span></th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-c3ow" rowspan="3">Dinámica Molecular</td>
-    <td class="tg-0pky">Compilando GROMACS</td>
-    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td rowspan="3">Dinámica Molecular</td>
+    <td>Compilando GROMACS</td>
+    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
     <td class="tg-0pky"><a href="https://colab.research.google.com/github/maurorodas/Quimica_computacional_173G7G/blob/main/notebooks/molecular_dynamics/compilando_gromacs.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg"></td>
   </tr>
   <tr>
-    <td class="tg-0pky">Preparando el sistema</td>
-    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
-    <td class="tg-0pky">ENLACE 2</td>
+    <td>Preparando el sistema</td>
+    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td>ENLACE 2</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Equilibrado</td>
-    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
-    <td class="tg-0pky">ENLACE 3</td>
+    <td>Equilibrado</td>
+    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td>ENLACE 3</td>
   </tr>
 </tbody>
 </table>
