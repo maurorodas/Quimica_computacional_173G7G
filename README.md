@@ -1,5 +1,5 @@
-<p align="center"><img src="images/ucaldas_logo.png" height="70" style="margin:0px 10px"/></p>
-<p align="center"><h1>Curso de Química Computacional <br> Universidad de Caldas</h1></p>
+<p align="center"><img src="images/ucaldas_logo.png" height="90" style="margin:0px 10px"/></p>
+<center><h1>Curso de Química Computacional <br> Universidad de Caldas</h1></center>
 
 Departamento de Química, Universidad de Caldas, Manizales - Colombia [(UCaldas)](https://www.ucaldas.edu.co/)
 
