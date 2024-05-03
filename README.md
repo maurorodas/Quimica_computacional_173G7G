@@ -34,7 +34,7 @@ Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el e
     <td class="tg-c3ow" rowspan="3">Dinámica Molecular</td>
     <td class="tg-0pky">Compilando GROMACS</td>
     <td class="tg-0pky">GROMACS [1], Python [2], Google Colab [3]</td>
-    <td class="tg-0pky"><a href="https://colab.research.google.com/github/maurorodas/Quimica_computacional_173G7G/blob/main/notebooks/molecular_dynamics/compilando_gromacs.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg"></td>
+    <td class="tg-0pky"><a href="https://colab.research.google.com/github/maurorodas/Quimica_computacional_173G7G/blob/main/notebooks/molecular_dynamics/compilando_gromacs.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg"></td>
   </tr>
   <tr>
     <td class="tg-0pky">Preparando el sistema</td>
@@ -51,6 +51,6 @@ Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el e
 
 ## Referencias
 
-1. **Pajamkar, A**. Practical Python Data Visualization: A Fast Track Approach To Learning Data Visualization With Python. **2021**. Springer. New York. ISBN-13 (electronic): 978-1-4842-6455-3.
+1. **Van Der Spoel**, David, et al. GROMACS: fast, flexible, and free. Journal of computational chemistry, **2005**, vol. 26, no 16, p. 1701-1718..
 2. **Galea, A**. Applied Data Science with Python and Jupyter. **2018**. Packt Publishing. ISBN: 9781789958171.
 3. **Bisong, E**. Building Machine Learning and Deep Learning Models on Google Cloud Platform. **2019**. Springer. New York. ISBN-13 (electronic): 978-1-4842-4470-8.
