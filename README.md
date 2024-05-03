@@ -1,4 +1,11 @@
-# Curso de Química Computacional de la Universidad de Caldas
+<div>
+    <div style="float: left">
+        <img src="images/ucaldas_logo.png" height="70" style="margin:0px 10px"/>
+    </div>
+    <div>
+        <h1>Curso de Química Computacional <br> Universidad de Caldas</h1>
+    </div>
+</div>
 
 Departamento de Química, Universidad de Caldas, Manizales - Colombia [(UCaldas)](https://www.ucaldas.edu.co/)
 
@@ -18,7 +25,7 @@ El curso y su contenido, incluyendo blocs de notas (notebooks), scripts y códig
 
 ## Contenido
 
-Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el entorno Jupyter y puede ser ejecutado en la herramienta libre de computación en la nube **Google Colab**.
+Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el entorno Jupyter y puede ser ejecutado en la herramienta libre de computación en la nube **Google Colab** [3].
 
 <table class="tg">
 <thead>
@@ -33,17 +40,17 @@ Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el e
   <tr>
     <td class="tg-c3ow" rowspan="3">Dinámica Molecular</td>
     <td class="tg-0pky">Compilando GROMACS</td>
-    <td class="tg-0pky">GROMACS [1], Python [2], Google Colab [3]</td>
+    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
     <td class="tg-0pky"><a href="https://colab.research.google.com/github/maurorodas/Quimica_computacional_173G7G/blob/main/notebooks/molecular_dynamics/compilando_gromacs.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg"></td>
   </tr>
   <tr>
     <td class="tg-0pky">Preparando el sistema</td>
-    <td class="tg-0pky">GROMACS [1], Python [2], Google Colab [3]</td>
+    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
     <td class="tg-0pky">ENLACE 2</td>
   </tr>
   <tr>
     <td class="tg-0pky">Equilibrado</td>
-    <td class="tg-0pky">GROMACS [1], Python [2], Google Colab [3]</td>
+    <td class="tg-0pky">GROMACS [1], Python [2],</br> Google Colab [3]</td>
     <td class="tg-0pky">ENLACE 3</td>
   </tr>
 </tbody>
