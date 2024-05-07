@@ -25,7 +25,7 @@ El curso y su contenido, incluyendo blocs de notas (notebooks), scripts y códig
 
 ## Contenido
 
-Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el entorno Jupyter y puede ser ejecutado en la herramienta libre de computación en la nube **Google Colab** [3].
+Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el entorno Jupyter [1] y puede ser ejecutado en la herramienta libre de computación en la nube **Google Colab** [2].
 
 <table>
 <thead>
@@ -40,17 +40,17 @@ Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el e
   <tr>
     <td rowspan="3">Dinámica Molecular</td>
     <td>Compilando GROMACS</td>
-    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td>GROMACS [3]</td>
     <td class="tg-0pky"><a href="https://colab.research.google.com/github/maurorodas/Quimica_computacional_173G7G/blob/main/notebooks/molecular_dynamics/compilando_gromacs.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg"></td>
   </tr>
   <tr>
     <td>Preparando el sistema</td>
-    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td>GROMACS [3]</td>
     <td>ENLACE 2</td>
   </tr>
   <tr>
     <td>Equilibrado</td>
-    <td>GROMACS [1], Python [2],</br> Google Colab [3]</td>
+    <td>GROMACS [3]</td>
     <td>ENLACE 3</td>
   </tr>
 </tbody>
@@ -58,6 +58,7 @@ Cada sección ha sido escrita como un bloc de notas (Notebook) de python en el e
 
 ## Referencias
 
-1. **Van Der Spoel**, David, et al. GROMACS: fast, flexible, and free. Journal of computational chemistry, **2005**, vol. 26, no 16, p. 1701-1718..
-2. **Galea, A**. Applied Data Science with Python and Jupyter. **2018**. Packt Publishing. ISBN: 9781789958171.
-3. **Bisong, E**. Building Machine Learning and Deep Learning Models on Google Cloud Platform. **2019**. Springer. New York. ISBN-13 (electronic): 978-1-4842-4470-8.
+1. **Galea, A**. Applied Data Science with Python and Jupyter. **2018**. Packt Publishing. ISBN: 9781789958171.
+2. **Bisong, E**. Building Machine Learning and Deep Learning Models on Google Cloud Platform. **2019**. Springer. New York. ISBN-13 (electronic): 978-1-4842-4470-8.
+3. **Van Der Spoel**, David, et al. GROMACS: fast, flexible, and free. Journal of computational chemistry, **2005**, vol. 26, no 16, p. 1701-1718.
+
