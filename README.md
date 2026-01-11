@@ -39,42 +39,93 @@ Este repositorio contiene el **material práctico completo** del curso de Introd
 
 ## 📋 Contenido del Curso
 
-### Módulo 1: Introducción a la Química Computacional
-1. Uso de consolas
-2. Herramientas básicas para la edición de texto plano
-3. Scripting básico
-4. Uso de programas de manipulación y graficado de datos
-5. Superficies de energía potencial
-6. Estructuras
-7. Mecánica estadística y teoría del estado de transición
+El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cada módulo construye sobre los conocimientos del anterior.
 
-### Módulo 2: Mecánica Molecular
-1. Campos de fuerza
-2. Energía y termodinámica
-3. Optimización de geometrías
-4. Frecuencias
+### Módulo 1: Fundamentos Computacionales
+**Objetivo:** Dominar las herramientas básicas de trabajo computacional
+1. Uso de consolas y línea de comandos
+2. Editores de texto plano (nano, vim, VSCode)
+3. Python para química computacional
+4. Scripting básico en Bash y Python
+5. Manipulación de datos con pandas y numpy
+6. Visualización de datos científicos (matplotlib, plotly)
+7. Git y control de versiones para proyectos científicos
 
-### Módulo 3: Introducción a la Mecánica Cuántica
-1. Función de onda
-2. Operador hamiltoniano
+### Módulo 2: Representación y Visualización Molecular
+**Objetivo:** Comprender cómo representar y visualizar moléculas computacionalmente
+1. Formatos de archivos moleculares (XYZ, PDB, MOL2, SDF)
+2. Notaciones químicas (SMILES, InChI, SMARTS)
+3. Bibliotecas de química computacional (RDKit, Open Babel)
+4. Visualización 3D de moléculas (Py3Dmol, NGLView)
+5. Generación de conformaciones moleculares
+6. Descriptores moleculares y propiedades calculadas
+7. Búsqueda y descarga de estructuras (PubChem, PDB)
+
+### Módulo 3: Mecánica Molecular
+**Objetivo:** Entender y aplicar métodos clásicos de simulación molecular
+1. Introducción a campos de fuerza
+2. Componentes de la energía molecular (enlaces, ángulos, torsiones, no enlazantes)
+3. Campos de fuerza comunes (MMFF, UFF, AMBER, CHARMM)
+4. Optimización de geometrías moleculares
+5. Análisis conformacional y superficies de energía potencial
+6. Cálculo de frecuencias vibraciones
+7. Termodinámica estadística molecular
+
+### Módulo 4: Dinámica Molecular
+**Objetivo:** Simular el movimiento de moléculas en el tiempo
+1. Fundamentos de dinámica molecular
+2. Integradores y algoritmos (Verlet, Leap-Frog)
+3. Condiciones de contorno y ensemble
+4. Termostatos y barostatos (NVE, NVT, NPT)
+5. Preparación de sistemas (solvatación, iones)
+6. Simulación de proteínas y biomoléculas
+7. Análisis de trayectorias (RMSD, RMSF, energías)
+8. Práctica con GROMACS y/o OpenMM
+
+### Módulo 5: Mecánica Cuántica Computacional
+**Objetivo:** Fundamentos teóricos de métodos cuánticos
+1. Ecuación de Schrödinger y función de onda
+2. Operador hamiltoniano y observables
 3. Aproximación de Born-Oppenheimer
-4. Teoría de Hückel
-5. Método de Hartree-Fock
+4. Orbitales atómicos y moleculares
+5. Teoría de Hückel para sistemas π
+6. Implementación computacional de Hückel
+7. Visualización de orbitales moleculares
 
-### Módulo 4: Métodos Semiempíricos
-1. NDDO
-2. INDO
-3. CNDO
-4. AM1
-5. PM3, PM5
-6. Teoría de Hückel extendida
+### Módulo 6: Métodos Semiempíricos
+**Objetivo:** Aplicar métodos cuánticos aproximados eficientes
+1. Filosofía de los métodos semiempíricos
+2. Aproximaciones NDDO, INDO, CNDO
+3. Métodos modernos: AM1, PM3, PM6, PM7
+4. Aplicaciones: moléculas orgánicas y biológicas
+5. Cálculos con MOPAC
+6. Ventajas y limitaciones
+7. Casos de estudio comparativos
 
-### Módulo 5: Métodos Ab-initio
+### Módulo 7: Métodos Ab-initio y DFT
+**Objetivo:** Realizar cálculos cuánticos de alta precisión
 1. Filosofía Ab-initio
-2. Set de bases
-3. Convergencia SCF
-4. Simetría
-5. Sistemas de capa abierta
+2. Método de Hartree-Fock (HF)
+3. Conjuntos de funciones base (STO, GTO, bases mínimas y extendidas)
+4. Convergencia SCF y técnicas de aceleración
+5. Teoría del Funcional de la Densidad (DFT)
+6. Funcionales de intercambio-correlación (LDA, GGA, híbridos)
+7. Métodos post-HF: teoría de perturbaciones (MP2)
+8. Coupled Cluster (CCSD, CCSD(T))
+9. Sistemas de capa abierta y multiplicidades
+10. Cálculos con Psi4, ORCA o Gaussian
+11. Análisis de resultados y propiedades moleculares
+
+### Módulo 8: Temas Avanzados (Opcional)
+**Objetivo:** Explorar aplicaciones especializadas
+1. Cálculo de estados excitados (TD-DFT, CIS)
+2. Modelos de solvatación (implícitos y explícitos)
+3. Análisis topológico de la densidad electrónica (QTAIM)
+4. Orbitales naturales de enlace (NBO)
+5. Espectroscopía computacional (IR, UV-Vis, NMR)
+6. Cálculo de constantes de velocidad
+7. Estudios de mecanismos de reacción
+8. Proyecto integrador final
 
 
 ## 🚀 Cómo Usar Este Repositorio
@@ -111,49 +162,105 @@ bash scripts/nombre_del_script.sh
 ## 📁 Estructura del Repositorio
 
 ```
-Introduccion_Computacional/
+Quimica_Computacional_173G7G/
 ├── README.md
 ├── requirements.txt
-├── modulo_01_introduccion/
+├── LICENSE
+│
+├── modulo_01_fundamentos/
 │   ├── README.md
 │   ├── 01_uso_consolas.ipynb
-│   ├── 02_edicion_texto.ipynb
-│   ├── 03_scripting_basico.ipynb
-│   ├── 04_manipulacion_datos.ipynb
-│   ├── 05_superficies_energia.ipynb
-│   ├── 06_estructuras.ipynb
-│   └── 07_mecanica_estadistica.ipynb
-├── modulo_02_mecanica_molecular/
+│   ├── 02_editores_texto.ipynb
+│   ├── 03_python_quimica.ipynb
+│   ├── 04_scripting_bash_python.ipynb
+│   ├── 05_pandas_numpy.ipynb
+│   ├── 06_visualizacion_datos.ipynb
+│   └── 07_git_control_versiones.ipynb
+│
+├── modulo_02_representacion_molecular/
 │   ├── README.md
-│   ├── 01_campos_fuerza.ipynb
-│   ├── 02_energia_termodinamica.ipynb
-│   ├── 03_optimizacion_geometrias.ipynb
-│   └── 04_frecuencias.ipynb
-├── modulo_03_mecanica_cuantica/
+│   ├── 01_formatos_moleculares.ipynb
+│   ├── 02_notaciones_quimicas.ipynb
+│   ├── 03_rdkit_openbabel.ipynb
+│   ├── 04_visualizacion_3d.ipynb
+│   ├── 05_conformaciones.ipynb
+│   ├── 06_descriptores_moleculares.ipynb
+│   └── 07_bases_datos_quimicas.ipynb
+│
+├── modulo_03_mecanica_molecular/
 │   ├── README.md
-│   ├── 01_funcion_onda.ipynb
-│   ├── 02_hamiltoniano.ipynb
+│   ├── 01_introduccion_campos_fuerza.ipynb
+│   ├── 02_componentes_energia.ipynb
+│   ├── 03_campos_fuerza_comunes.ipynb
+│   ├── 04_optimizacion_geometrias.ipynb
+│   ├── 05_analisis_conformacional.ipynb
+│   ├── 06_frecuencias_vibraciones.ipynb
+│   └── 07_termodinamica_estadistica.ipynb
+│
+├── modulo_04_dinamica_molecular/
+│   ├── README.md
+│   ├── 01_fundamentos_md.ipynb
+│   ├── 02_integradores_algoritmos.ipynb
+│   ├── 03_condiciones_ensemble.ipynb
+│   ├── 04_termostatos_barostatos.ipynb
+│   ├── 05_preparacion_sistemas.ipynb
+│   ├── 06_simulacion_biomoleculas.ipynb
+│   ├── 07_analisis_trayectorias.ipynb
+│   └── 08_practica_gromacs_openmm.ipynb
+│
+├── modulo_05_mecanica_cuantica/
+│   ├── README.md
+│   ├── 01_ecuacion_schrodinger.ipynb
+│   ├── 02_hamiltoniano_observables.ipynb
 │   ├── 03_born_oppenheimer.ipynb
-│   ├── 04_teoria_huckel.ipynb
-│   └── 05_hartree_fock.ipynb
-├── modulo_04_metodos_semiempiricos/
+│   ├── 04_orbitales_atomicos_moleculares.ipynb
+│   ├── 05_teoria_huckel.ipynb
+│   ├── 06_implementacion_huckel.ipynb
+│   └── 07_visualizacion_orbitales.ipynb
+│
+├── modulo_06_metodos_semiempiricos/
 │   ├── README.md
-│   ├── 01_nddo.ipynb
-│   ├── 02_indo.ipynb
-│   ├── 03_cndo.ipynb
-│   ├── 04_am1.ipynb
-│   ├── 05_pm3_pm5.ipynb
-│   └── 06_huckel_extendida.ipynb
-├── modulo_05_metodos_ab_initio/
+│   ├── 01_introduccion_semiempiricos.ipynb
+│   ├── 02_aproximaciones_nddo.ipynb
+│   ├── 03_metodos_modernos.ipynb
+│   ├── 04_aplicaciones_organicas.ipynb
+│   ├── 05_calculos_mopac.ipynb
+│   ├── 06_ventajas_limitaciones.ipynb
+│   └── 07_casos_estudio.ipynb
+│
+├── modulo_07_abinitio_dft/
 │   ├── README.md
-│   ├── 01_filosofia_ab_initio.ipynb
-│   ├── 02_set_bases.ipynb
-│   ├── 03_convergencia_scf.ipynb
-│   ├── 04_simetria.ipynb
-│   └── 05_sistemas_capa_abierta.ipynb
+│   ├── 01_filosofia_abinitio.ipynb
+│   ├── 02_hartree_fock.ipynb
+│   ├── 03_funciones_base.ipynb
+│   ├── 04_convergencia_scf.ipynb
+│   ├── 05_introduccion_dft.ipynb
+│   ├── 06_funcionales_dft.ipynb
+│   ├── 07_metodos_post_hf.ipynb
+│   ├── 08_coupled_cluster.ipynb
+│   ├── 09_sistemas_capa_abierta.ipynb
+│   ├── 10_calculos_psi4_orca.ipynb
+│   └── 11_analisis_propiedades.ipynb
+│
+├── modulo_08_temas_avanzados/
+│   ├── README.md
+│   ├── 01_estados_excitados.ipynb
+│   ├── 02_modelos_solvatacion.ipynb
+│   ├── 03_qtaim.ipynb
+│   ├── 04_analisis_nbo.ipynb
+│   ├── 05_espectroscopia_computacional.ipynb
+│   ├── 06_constantes_velocidad.ipynb
+│   ├── 07_mecanismos_reaccion.ipynb
+│   └── 08_proyecto_integrador.ipynb
+│
 └── recursos/
     ├── datos/
-    └── imagenes/
+    │   ├── moleculas/
+    │   ├── trayectorias/
+    │   └── espectros/
+    ├── imagenes/
+    ├── scripts/
+    └── referencias/
 ```
 
 
@@ -168,24 +275,47 @@ Este curso utiliza exclusivamente **software libre y de código abierto**:
 ### Librerías Científicas Python
 | Librería | Propósito | Instalación |
 |----------|-----------|-------------|
-| **NumPy** | Cálculos numéricos | `pip install numpy` |
-| **Matplotlib** | Visualización de datos | `pip install matplotlib` |
-| **SciPy** | Algoritmos científicos | `pip install scipy` |
-| **Pandas** | Manipulación de datos | `pip install pandas` |
-| **RDKit** | Química computacional | `pip install rdkit` |
-| **ASE** | Simulación atómica | `pip install ase` |
-| **Psi4** | Cálculos cuánticos | `conda install psi4` |
-| **OpenBabel** | Conversión de formatos | `pip install openbabel` |
+| **NumPy** | Cálculos numéricos y arrays | `pip install numpy` |
+| **SciPy** | Algoritmos científicos avanzados | `pip install scipy` |
+| **Matplotlib** | Visualización 2D de datos | `pip install matplotlib` |
+| **Plotly** | Visualización interactiva | `pip install plotly` |
+| **Pandas** | Manipulación y análisis de datos | `pip install pandas` |
+| **Jupyter** | Notebooks interactivos | `pip install jupyter` |
 
-### Software de Simulación
-- **ORCA** - Cálculos de química cuántica (gratuito para académicos)
-- **GAMESS** - Cálculos ab-initio (código abierto)
-- **NWChem** - Química computacional escalable (open source)
+### Química Computacional
+| Librería | Propósito | Instalación |
+|----------|-----------|-------------|
+| **RDKit** | Química e informática molecular | `conda install -c conda-forge rdkit` |
+| **Open Babel** | Conversión de formatos moleculares | `conda install -c conda-forge openbabel` |
+| **ASE** | Atomic Simulation Environment | `pip install ase` |
+| **Py3Dmol** | Visualización 3D en notebooks | `pip install py3dmol` |
+| **MDAnalysis** | Análisis de dinámica molecular | `pip install MDAnalysis` |
+| **ProDy** | Análisis de proteínas | `pip install ProDy` |
 
-### Herramientas de Visualización
-- **PyMOL** - Visualización molecular (versión open-source)
-- **VMD** - Visual Molecular Dynamics (gratuito)
-- **Avogadro** - Editor y visualizador molecular (open source)
+### Software de Cálculo Cuántico
+| Software | Propósito | Instalación |
+|----------|-----------|-------------|
+| **Psi4** | Cálculos ab-initio y DFT | `conda install -c psi4 psi4` |
+| **PySCF** | Química cuántica en Python | `pip install pyscf` |
+| **ORCA** | Cálculos cuánticos (gratuito académico) | [Descarga manual](https://orcaforum.kofo.mpg.de/) |
+| **MOPAC** | Métodos semiempíricos | [Descarga manual](http://openmopac.net/) |
+| **XTB** | Cálculos tight-binding | `conda install -c conda-forge xtb` |
+
+### Dinámica Molecular
+| Software | Propósito | Instalación |
+|----------|-----------|-------------|
+| **GROMACS** | Simulaciones MD de biomoléculas | Sistema dependiente |
+| **OpenMM** | MD en Python con GPU | `conda install -c conda-forge openmm` |
+| **LAMMPS** | MD de propósito general | Sistema dependiente |
+| **NAMD** | MD de biomoléculas grandes | [Descarga manual](https://www.ks.uiuc.edu/Research/namd/) |
+
+### Visualización Molecular
+| Software | Propósito | Acceso |
+|----------|-----------|--------|
+| **PyMOL** | Visualización avanzada (versión open-source) | `conda install -c conda-forge pymol-open-source` |
+| **VMD** | Visual Molecular Dynamics | [Descarga gratuita](https://www.ks.uiuc.edu/Research/vmd/) |
+| **Avogadro** | Editor y visualizador molecular | [Descarga gratuita](https://avogadro.cc/) |
+| **NGLView** | Visualización en notebooks | `pip install nglview` |
 
 
 ## 📝 Contribuciones y Retroalimentación
@@ -236,7 +366,24 @@ siempre que se cite apropiadamente la fuente.
 Explora los módulos en orden secuencial o dirígete directamente al tema de tu interés.  
 ¡La química computacional te espera!
 
-**[📖 Comenzar con el Módulo 1](modulo_01_introduccion/)**
+**[📖 Comenzar con el Módulo 1: Fundamentos Computacionales](modulo_01_fundamentos/)**
+
+---
+
+### 📊 Ruta de Aprendizaje Sugerida
+
+```
+Módulo 1 (Fundamentos) → Módulo 2 (Representación) → Módulo 3 (MM) 
+                                                           ↓
+Módulo 8 (Avanzados) ← Módulo 7 (Ab-initio/DFT) ← Módulo 6 (Semiempíricos)
+                                                           ↑
+                                                    Módulo 5 (MC)
+                                                           ↑
+                                                    Módulo 4 (MD)
+```
+
+**Tiempo estimado por módulo:** 2-3 semanas  
+**Duración total del curso:** 16-18 semanas (1 semestre)
 
 ---
 
