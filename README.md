@@ -43,7 +43,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 
 ### Módulo 1: Fundamentos Computacionales
 **Objetivo:** Dominar las herramientas básicas de trabajo computacional
-1. Uso de consolas y línea de comandos
+1. [Uso de consolas y línea de comandos](modulo_01_fundamentos/01_uso_consolas.ipynb)
 2. Editores de texto plano (nano, vim, VSCode)
 3. Python para química computacional
 4. Scripting básico en Bash y Python
