@@ -45,8 +45,8 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 **Objetivo:** Dominar las herramientas básicas de trabajo computacional
 1. [Uso de consolas y línea de comandos](modulo_01_fundamentos/01_uso_consolas.ipynb)
 2. [Editores de texto plano (nano, vim, VSCode)](modulo_01_fundamentos/02_editores_texto.ipynb)
-3. Python para química computacional
-4. Scripting básico en Bash y Python
+3. [Python para química computacional](modulo_01_fundamentos/03_python_quimica.ipynb)
+4. [Scripting básico en Bash y Python](modulo_01_fundamentos/04_scripting_basico.ipynb)
 5. Manipulación de datos con pandas y numpy
 6. Visualización de datos científicos (matplotlib, plotly)
 7. Git y control de versiones para proyectos científicos
