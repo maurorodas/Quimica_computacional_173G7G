@@ -333,19 +333,14 @@ Todas las contribuciones son bienvenidas y ayudan a mejorar este curso para futu
 
 ## 📄 Licencia
 
-<div align="center">
+Este material educativo está disponible bajo licencia [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
 
-**Material Educativo - Universidad de Caldas**
-
-Este material está diseñado con fines educativos y de investigación.  
-Se permite su uso, modificación y distribución con propósitos académicos,  
-siempre que se cite apropiadamente la fuente.
+Se permite su uso, modificación y distribución con propósitos académicos y educativos,  
+siempre que se cite apropiadamente la fuente y se mantenga la misma licencia.
 
 📚 **Curso:** Introducción a la Química Computacional (173G7G)  
 🏛️ **Institución:** Universidad de Caldas  
 📅 **Año:** 2026
-
-</div>
 
 ---
 
@@ -388,7 +383,6 @@ Módulo 8 (Avanzados) ← Módulo 7 (Ab-initio/DFT) ← Módulo 6 (Semiempírico
 
 ---
 
-*Desarrollado con ❤️ para estudiantes de Química Computacional*  
 *Universidad de Caldas - 2026*
 
 </div>
