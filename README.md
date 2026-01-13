@@ -47,9 +47,10 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 2. [Editores de texto plano (nano, vim, VSCode)](modulo_01_fundamentos/02_editores_texto.ipynb)
 3. [Python para química computacional](modulo_01_fundamentos/03_python_quimica.ipynb)
 4. [Scripting básico en Bash y Python](modulo_01_fundamentos/04_scripting_basico.ipynb)
-5. Manipulación de datos con pandas y numpy
-6. Visualización de datos científicos (matplotlib, plotly)
-7. Git y control de versiones para proyectos científicos
+5. [Control de versiones con Git y GitHub](modulo_01_fundamentos/05_control_versiones.ipynb)
+6. [Manipulación de datos con pandas y numpy](modulo_01_fundamentos/06_pandas_numpy.ipynb)
+7. [Visualización de datos científicos (matplotlib, plotly)](modulo_01_fundamentos/07_visualizacion_datos.ipynb)
+8. [Entornos virtuales y reproducibilidad científica (conda, venv)](modulo_01_fundamentos/08_entornos_virtuales.ipynb)
 
 ### Módulo 2: Representación y Visualización Molecular
 **Objetivo:** Comprender cómo representar y visualizar moléculas computacionalmente
@@ -172,10 +173,10 @@ Quimica_Computacional_173G7G/
 │   ├── 01_uso_consolas.ipynb
 │   ├── 02_editores_texto.ipynb
 │   ├── 03_python_quimica.ipynb
-│   ├── 04_scripting_bash_python.ipynb
-│   ├── 05_pandas_numpy.ipynb
-│   ├── 06_visualizacion_datos.ipynb
-│   └── 07_git_control_versiones.ipynb
+│   ├── 04_scripting_basico.ipynb
+│   ├── 05_control_versiones.ipynb
+│   ├── 06_pandas_numpy.ipynb
+│   └── 07_visualizacion_datos.ipynb
 │
 ├── modulo_02_representacion_molecular/
 │   ├── README.md
