@@ -54,7 +54,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 
 ### Módulo 2: Representación y Visualización Molecular
 **Objetivo:** Comprender cómo representar y visualizar moléculas computacionalmente
-1. Formatos de archivos moleculares (XYZ, PDB, MOL2, SDF)
+1. [Formatos de archivos moleculares (XYZ, PDB, MOL2, SDF)](modulo_02_mecanica_molecular/01_formatos_moleculares.ipynb)
 2. Notaciones químicas (SMILES, InChI, SMARTS)
 3. Bibliotecas de química computacional (RDKit, Open Babel)
 4. Visualización 3D de moléculas (Py3Dmol, NGLView)
