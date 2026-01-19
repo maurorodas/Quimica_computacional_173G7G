@@ -54,13 +54,13 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 
 ### Módulo 2: Representación y Visualización Molecular
 **Objetivo:** Comprender cómo representar y visualizar moléculas computacionalmente
-1. [Formatos de archivos moleculares (XYZ, PDB, MOL2, SDF)](modulo_02_mecanica_molecular/01_formatos_moleculares.ipynb)
-2. Notaciones químicas (SMILES, InChI, SMARTS)
-3. Bibliotecas de química computacional (RDKit, Open Babel)
-4. Visualización 3D de moléculas (Py3Dmol, NGLView)
-5. Generación de conformaciones moleculares
-6. Descriptores moleculares y propiedades calculadas
-7. Búsqueda y descarga de estructuras (PubChem, PDB)
+1. [Formatos de archivos moleculares (XYZ, PDB, MOL2, SDF)](modulo_02_representacion_molecular/01_formatos_moleculares.ipynb)
+2. [Notaciones químicas (SMILES, InChI, SMARTS)](modulo_02_representacion_molecular/02_notaciones_quimicas.ipynb)
+3. [Bibliotecas de química computacional (RDKit, Open Babel)](modulo_02_representacion_molecular/03_rdkit_openbabel.ipynb)
+4. [Visualización 3D de moléculas (Py3Dmol, NGLView, Avogadro, Chimera)](modulo_02_representacion_molecular/04_visualizacion_3d.ipynb)
+5. [Generación de conformaciones moleculares](modulo_02_representacion_molecular/05_conformaciones.ipynb)
+6. [Descriptores moleculares y propiedades calculadas](modulo_02_representacion_molecular/06_descriptores.ipynb)
+7. [Búsqueda y descarga de estructuras (PubChem, PDB)](modulo_02_representacion_molecular/07_bases_datos.ipynb)
 
 ### Módulo 3: Mecánica Molecular
 **Objetivo:** Entender y aplicar métodos clásicos de simulación molecular
@@ -363,6 +363,8 @@ Explora los módulos en orden secuencial o dirígete directamente al tema de tu 
 ¡La química computacional te espera!
 
 **[📖 Comenzar con el Módulo 1: Fundamentos Computacionales](modulo_01_fundamentos/)**
+
+**[🧬 Continuar con el Módulo 2: Representación y Visualización Molecular](modulo_02_representacion_molecular/)**
 
 ---
 
