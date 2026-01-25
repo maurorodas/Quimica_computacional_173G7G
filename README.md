@@ -64,13 +64,14 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 
 ### Módulo 3: Mecánica Molecular
 **Objetivo:** Entender y aplicar métodos clásicos de simulación molecular
-1. Introducción a campos de fuerza
-2. Componentes de la energía molecular (enlaces, ángulos, torsiones, no enlazantes)
-3. Campos de fuerza comunes (MMFF, UFF, AMBER, CHARMM)
-4. Optimización de geometrías moleculares
-5. Análisis conformacional y superficies de energía potencial
-6. Cálculo de frecuencias vibraciones
-7. Termodinámica estadística molecular
+1. [Fundamentos de Mecánica Molecular](modulo_03_mecanica_molecular/01_fundamentos_mecanica_molecular.ipynb)
+2. Campos de fuerza en la práctica
+3. Optimización de geometrías moleculares
+4. Superficies de energía potencial
+5. Análisis conformacional
+6. Cálculo de propiedades moleculares
+7. Software especializado (OpenBabel, RDKit, Avogadro)
+8. Validación de resultados
 
 ### Módulo 4: Dinámica Molecular
 **Objetivo:** Simular el movimiento de moléculas en el tiempo

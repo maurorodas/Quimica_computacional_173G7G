@@ -33,7 +33,7 @@ Al completar este módulo, serás capaz de:
 
 | # | Actividad | Descripción | Duración |
 |---|-----------|-------------|----------|
-| **3.1** | Fundamentos de Mecánica Molecular | Teoría, ecuaciones, aproximaciones y limitaciones | 2-3 horas |
+| **3.1** | [Fundamentos de Mecánica Molecular](01_fundamentos_mecanica_molecular.ipynb) | Teoría, ecuaciones, aproximaciones y limitaciones | 2-3 horas |
 | **3.2** | Campos de Fuerza | MM2, MM3, MMFF, UFF, GAFF - Características y aplicaciones | 3-4 horas |
 | **3.3** | Optimización de Geometrías | Métodos de minimización, criterios de convergencia | 3-4 horas |
 | **3.4** | Superficies de Energía Potencial | PES, puntos estacionarios, caminos de reacción | 3-4 horas |
