@@ -41,3 +41,6 @@ Thumbs.db
 
 # Cache
 .cache/
+
+# Preparación (archivos temporales y scripts de generación)
+preparacion/
