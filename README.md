@@ -65,15 +65,26 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 ### Módulo 3: Mecánica Molecular
 **Objetivo:** Entender y aplicar métodos clásicos de simulación molecular
 1. [Fundamentos de Mecánica Molecular](modulo_03_mecanica_molecular/01_fundamentos_mecanica_molecular.ipynb)
-2. Campos de fuerza en la práctica
-3. Optimización de geometrías moleculares
+2. [Campos de fuerza en la práctica](modulo_03_mecanica_molecular/02_campos_fuerza_practica.ipynb)
+3. [Optimización de geometrías moleculares](modulo_03_mecanica_molecular/03_optimizacion_geometrias.ipynb)
 4. Superficies de energía potencial
 5. Análisis conformacional
 6. Cálculo de propiedades moleculares
 7. Software especializado (OpenBabel, RDKit, Avogadro)
 8. Validación de resultados
 
-### Módulo 4: Dinámica Molecular
+### Módulo 4: Modelado de Proteínas y Docking Molecular
+**Objetivo:** Aplicar técnicas modernas de modelado de proteínas y docking molecular
+1. [Fundamentos de estructura de proteínas](modulo_04_modelado_proteinas_docking/01_fundamentos_estructura_proteinas.ipynb)
+2. [Modelado por homología (MODELLER, SWISS-MODEL)](modulo_04_modelado_proteinas_docking/02_modelado_homologia.ipynb)
+3. [Predicción con IA: AlphaFold2 y ESMFold](modulo_04_modelado_proteinas_docking/03_alphafold_esmfold.ipynb)
+4. Preparación de proteínas para docking
+5. Fundamentos de docking molecular
+6. Docking ligando-proteína (AutoDock Vina)
+7. Docking proteína-proteína
+8. Cribado virtual y análisis de resultados
+
+### Módulo 5: Dinámica Molecular
 **Objetivo:** Simular el movimiento de moléculas en el tiempo
 1. Fundamentos de dinámica molecular
 2. Integradores y algoritmos (Verlet, Leap-Frog)
@@ -84,7 +95,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 7. Análisis de trayectorias (RMSD, RMSF, energías)
 8. Práctica con GROMACS y/o OpenMM
 
-### Módulo 5: Mecánica Cuántica Computacional
+### Módulo 6: Mecánica Cuántica Computacional
 **Objetivo:** Fundamentos teóricos de métodos cuánticos
 1. Ecuación de Schrödinger y función de onda
 2. Operador hamiltoniano y observables
@@ -94,7 +105,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 6. Implementación computacional de Hückel
 7. Visualización de orbitales moleculares
 
-### Módulo 6: Métodos Semiempíricos
+### Módulo 7: Métodos Semiempíricos
 **Objetivo:** Aplicar métodos cuánticos aproximados eficientes
 1. Filosofía de los métodos semiempíricos
 2. Aproximaciones NDDO, INDO, CNDO
@@ -104,7 +115,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 6. Ventajas y limitaciones
 7. Casos de estudio comparativos
 
-### Módulo 7: Métodos Ab-initio y DFT
+### Módulo 8: Métodos Ab-initio y DFT
 **Objetivo:** Realizar cálculos cuánticos de alta precisión
 1. Filosofía Ab-initio
 2. Método de Hartree-Fock (HF)
@@ -118,7 +129,7 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 10. Cálculos con Psi4, ORCA o Gaussian
 11. Análisis de resultados y propiedades moleculares
 
-### Módulo 8: Temas Avanzados (Opcional)
+### Módulo 9: Temas Avanzados (Opcional)
 **Objetivo:** Explorar aplicaciones especializadas
 1. Cálculo de estados excitados (TD-DFT, CIS)
 2. Modelos de solvatación (implícitos y explícitos)
@@ -199,7 +210,18 @@ Quimica_Computacional_173G7G/
 │   ├── 06_frecuencias_vibraciones.ipynb
 │   └── 07_termodinamica_estadistica.ipynb
 │
-├── modulo_04_dinamica_molecular/
+├── modulo_04_modelado_proteinas_docking/
+│   ├── README.md
+│   ├── 01_fundamentos_estructura_proteinas.ipynb
+│   ├── 02_modelado_homologia.ipynb
+│   ├── 03_alphafold_esmfold.ipynb
+│   ├── 04_preparacion_proteinas.ipynb
+│   ├── 05_docking_fundamentos.ipynb
+│   ├── 06_docking_ligando_proteina.ipynb
+│   ├── 07_docking_proteina_proteina.ipynb
+│   └── 08_virtual_screening.ipynb
+│
+├── modulo_05_dinamica_molecular/
 │   ├── README.md
 │   ├── 01_fundamentos_md.ipynb
 │   ├── 02_integradores_algoritmos.ipynb
@@ -210,7 +232,7 @@ Quimica_Computacional_173G7G/
 │   ├── 07_analisis_trayectorias.ipynb
 │   └── 08_practica_gromacs_openmm.ipynb
 │
-├── modulo_05_mecanica_cuantica/
+├── modulo_06_mecanica_cuantica/
 │   ├── README.md
 │   ├── 01_ecuacion_schrodinger.ipynb
 │   ├── 02_hamiltoniano_observables.ipynb
@@ -220,7 +242,7 @@ Quimica_Computacional_173G7G/
 │   ├── 06_implementacion_huckel.ipynb
 │   └── 07_visualizacion_orbitales.ipynb
 │
-├── modulo_06_metodos_semiempiricos/
+├── modulo_07_metodos_semiempiricos/
 │   ├── README.md
 │   ├── 01_introduccion_semiempiricos.ipynb
 │   ├── 02_aproximaciones_nddo.ipynb
@@ -230,7 +252,7 @@ Quimica_Computacional_173G7G/
 │   ├── 06_ventajas_limitaciones.ipynb
 │   └── 07_casos_estudio.ipynb
 │
-├── modulo_07_abinitio_dft/
+├── modulo_08_abinitio_dft/
 │   ├── README.md
 │   ├── 01_filosofia_abinitio.ipynb
 │   ├── 02_hartree_fock.ipynb
@@ -244,7 +266,7 @@ Quimica_Computacional_173G7G/
 │   ├── 10_calculos_psi4_orca.ipynb
 │   └── 11_analisis_propiedades.ipynb
 │
-├── modulo_08_temas_avanzados/
+├── modulo_09_temas_avanzados/
 │   ├── README.md
 │   ├── 01_estados_excitados.ipynb
 │   ├── 02_modelos_solvatacion.ipynb
