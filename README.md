@@ -67,22 +67,22 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 1. [Fundamentos de Mecánica Molecular](modulo_03_mecanica_molecular/01_fundamentos_mecanica_molecular.ipynb)
 2. [Campos de fuerza en la práctica](modulo_03_mecanica_molecular/02_campos_fuerza_practica.ipynb)
 3. [Optimización de geometrías moleculares](modulo_03_mecanica_molecular/03_optimizacion_geometrias.ipynb)
-4. Superficies de energía potencial
-5. Análisis conformacional
-6. Cálculo de propiedades moleculares
-7. Software especializado (OpenBabel, RDKit, Avogadro)
-8. Validación de resultados
+4. [Superficies de energía potencial](modulo_03_mecanica_molecular/04_superficies_energia.ipynb)
+5. [Análisis conformacional](modulo_03_mecanica_molecular/05_analisis_conformacional.ipynb)
+6. [Cálculo de propiedades moleculares](modulo_03_mecanica_molecular/06_calculo_propiedades.ipynb)
+7. [Software especializado (RDKit, OpenBabel, Py3Dmol)](modulo_03_mecanica_molecular/07_software_especializado.ipynb)
+8. [Validación de resultados](modulo_03_mecanica_molecular/08_validacion_resultados.ipynb)
 
 ### Módulo 4: Modelado de Proteínas y Docking Molecular
 **Objetivo:** Aplicar técnicas modernas de modelado de proteínas y docking molecular
 1. [Fundamentos de estructura de proteínas](modulo_04_modelado_proteinas_docking/01_fundamentos_estructura_proteinas.ipynb)
 2. [Modelado por homología (MODELLER, SWISS-MODEL)](modulo_04_modelado_proteinas_docking/02_modelado_homologia.ipynb)
 3. [Predicción con IA: AlphaFold2 y ESMFold](modulo_04_modelado_proteinas_docking/03_alphafold_esmfold.ipynb)
-4. Preparación de proteínas para docking
-5. Fundamentos de docking molecular
-6. Docking ligando-proteína (AutoDock Vina)
-7. Docking proteína-proteína
-8. Cribado virtual y análisis de resultados
+4. [Preparación de proteínas para docking](modulo_04_modelado_proteinas_docking/04_preparacion_proteinas.ipynb)
+5. [Fundamentos de docking molecular](modulo_04_modelado_proteinas_docking/05_docking_fundamentos.ipynb)
+6. [Docking ligando-proteína (AutoDock Vina)](modulo_04_modelado_proteinas_docking/06_docking_ligando_proteina.ipynb)
+7. [Docking proteína-proteína (HADDOCK, ClusPro)](modulo_04_modelado_proteinas_docking/07_docking_proteina_proteina.ipynb)
+8. [Cribado virtual y análisis de resultados](modulo_04_modelado_proteinas_docking/08_virtual_screening.ipynb)
 
 ### Módulo 5: Dinámica Molecular
 **Objetivo:** Simular el movimiento de moléculas en el tiempo
@@ -197,18 +197,14 @@ Quimica_Computacional_173G7G/
 │   ├── 03_rdkit_openbabel.ipynb
 │   ├── 04_visualizacion_3d.ipynb
 │   ├── 05_conformaciones.ipynb
-│   ├── 06_descriptores_moleculares.ipynb
-│   └── 07_bases_datos_quimicas.ipynb
+│   ├── 06_descriptores.ipynb
+│   └── 07_bases_datos.ipynb
 │
 ├── modulo_03_mecanica_molecular/
 │   ├── README.md
-│   ├── 01_introduccion_campos_fuerza.ipynb
-│   ├── 02_componentes_energia.ipynb
-│   ├── 03_campos_fuerza_comunes.ipynb
-│   ├── 04_optimizacion_geometrias.ipynb
-│   ├── 05_analisis_conformacional.ipynb
-│   ├── 06_frecuencias_vibraciones.ipynb
-│   └── 07_termodinamica_estadistica.ipynb
+│   ├── 01_fundamentos_mecanica_molecular.ipynb
+│   ├── 02_campos_fuerza_practica.ipynb
+│   └── 03_optimizacion_geometrias.ipynb
 │
 ├── modulo_04_modelado_proteinas_docking/
 │   ├── README.md

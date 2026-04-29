@@ -276,7 +276,7 @@ Incluirá:
 
 ## 🔄 Actualizaciones
 
-Este módulo se actualiza periódicamente. Última actualización: **Febrero 2026**
+Este módulo se actualiza periódicamente. Última actualización: **Abril 2026**
 
 ## 📝 Licencia
 

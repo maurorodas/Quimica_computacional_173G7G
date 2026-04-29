@@ -36,11 +36,11 @@ Al completar este módulo, serás capaz de:
 | **3.1** | [Fundamentos de Mecánica Molecular](01_fundamentos_mecanica_molecular.ipynb) | Teoría, ecuaciones, aproximaciones y limitaciones | 2-3 horas |
 | **3.2** | [Campos de Fuerza en la Práctica](02_campos_fuerza_practica.ipynb) | Comparación MMFF94, UFF, AMBER, GAFF - Aplicaciones prácticas | 3-4 horas |
 | **3.3** | [Optimización de Geometrías Moleculares](03_optimizacion_geometrias.ipynb) | Métodos SD, CG, L-BFGS, Newton; MC, SA, Basin Hopping | 3-4 horas |
-| **3.4** | Superficies de Energía Potencial | PES, puntos estacionarios, caminos de reacción | 3-4 horas |
-| **3.5** | Análisis Conformacional | Búsqueda sistemática, métodos estocásticos | 3-4 horas |
-| **3.6** | Cálculos de Propiedades | Energías, momentos dipolares, frecuencias | 2-3 horas |
-| **3.7** | Software Especializado | OpenBabel, RDKit, Avogadro, PyMOL | 2-3 horas |
-| **3.8** | Validación de Resultados | Comparación con datos experimentales y QM | 2-3 horas |
+| **3.4** | [Superficies de Energía Potencial](04_superficies_energia.ipynb) | PES, puntos estacionarios, caminos de reacción | 3-4 horas |
+| **3.5** | [Análisis Conformacional](05_analisis_conformacional.ipynb) | Búsqueda sistemática, métodos estocásticos | 3-4 horas |
+| **3.6** | [Cálculo de Propiedades](06_calculo_propiedades.ipynb) | Energías, momentos dipolares, descriptores ADME | 2-3 horas |
+| **3.7** | [Software Especializado](07_software_especializado.ipynb) | OpenBabel, RDKit, Py3Dmol, pipelines integrados | 2-3 horas |
+| **3.8** | [Validación de Resultados](08_validacion_resultados.ipynb) | Comparación con datos experimentales y QM | 2-3 horas |
 
 **Duración total estimada:** 20-28 horas
 
@@ -245,7 +245,7 @@ Incluirá:
 
 ## 🔄 Actualizaciones
 
-Este módulo se actualiza periódicamente. Última actualización: **Enero 2026**
+Este módulo se actualiza periódicamente. Última actualización: **Abril 2026**
 
 ## 📝 Licencia
 
