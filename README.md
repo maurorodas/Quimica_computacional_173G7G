@@ -86,14 +86,14 @@ El curso está diseñado con un **aprendizaje secuencial progresivo**, donde cad
 
 ### Módulo 5: Dinámica Molecular
 **Objetivo:** Simular el movimiento de moléculas en el tiempo
-1. Fundamentos de dinámica molecular
-2. Integradores y algoritmos (Verlet, Leap-Frog)
-3. Condiciones de contorno y ensemble
-4. Termostatos y barostatos (NVE, NVT, NPT)
-5. Preparación de sistemas (solvatación, iones)
-6. Simulación de proteínas y biomoléculas
-7. Análisis de trayectorias (RMSD, RMSF, energías)
-8. Práctica con GROMACS y/o OpenMM
+1. [Fundamentos de dinámica molecular](modulo_05_dinamica_molecular/01_fundamentos_dinamica_molecular.ipynb)
+2. [Integradores y algoritmos (Verlet, Velocity-Verlet, Leap-Frog)](modulo_05_dinamica_molecular/02_integradores_algoritmos.ipynb)
+3. [Condiciones de contorno periódicas y ensambles](modulo_05_dinamica_molecular/03_condiciones_contorno_ensemble.ipynb)
+4. [Termostatos y barostatos (v-rescale, Nosé-Hoover)](modulo_05_dinamica_molecular/04_termostatos_barostatos.ipynb)
+5. [Preparación de sistemas (solvatación, modelos de agua, iones)](modulo_05_dinamica_molecular/05_preparacion_sistemas.ipynb)
+6. [Simulación de proteínas y biomoléculas](modulo_05_dinamica_molecular/06_simulacion_proteinas.ipynb)
+7. [Análisis de trayectorias (RMSD, RMSF, radio de giro)](modulo_05_dinamica_molecular/07_analisis_trayectorias.ipynb)
+8. [Práctica integrada con GROMACS y OpenMM](modulo_05_dinamica_molecular/08_practica_gromacs_openmm.ipynb)
 
 ### Módulo 6: Mecánica Cuántica Computacional
 **Objetivo:** Fundamentos teóricos de métodos cuánticos
