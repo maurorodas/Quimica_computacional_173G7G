@@ -1,0 +1,1980 @@
+%==============================================================================
+% PRESENTACIÓN: DINÁMICA MOLECULAR
+% Universidad de Caldas - Departamento de Química
+% Introducción a la Química Computacional (173G7G)
+% Profesor: José Mauricio Rodas Rodríguez
+%==============================================================================
+
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+%------------------------------------------------------------------------------
+% PAQUETES
+%------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{chemformula}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{fontawesome5}
+\usepackage{tcolorbox}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{
+  arrows.meta,
+  shapes.geometric,
+  shapes.misc,
+  positioning,
+  fit,
+  backgrounds,
+  decorations.pathmorphing,
+  decorations.markings,
+  calc,
+  shadows,
+  patterns
+}
+\tcbuselibrary{skins, breakable, theorems}
+
+%------------------------------------------------------------------------------
+% PALETA DE COLORES PASTEL — MODERNA
+%------------------------------------------------------------------------------
+\definecolor{PastelBlue}{RGB}{174, 214, 241}       % Azul suave
+\definecolor{PastelGreen}{RGB}{171, 235, 198}      % Verde suave
+\definecolor{PastelPurple}{RGB}{212, 172, 220}     % Lila
+\definecolor{PastelOrange}{RGB}{250, 215, 160}     % Naranja suave
+\definecolor{PastelRed}{RGB}{245, 183, 177}        % Rojo-rosa
+\definecolor{PastelYellow}{RGB}{249, 231, 159}     % Amarillo suave
+\definecolor{PastelTeal}{RGB}{163, 228, 215}       % Teal
+\definecolor{DarkBlue}{RGB}{31, 97, 141}           % Azul oscuro (texto)
+\definecolor{DarkGreen}{RGB}{30, 132, 73}          % Verde oscuro
+\definecolor{DarkPurple}{RGB}{118, 68, 138}        % Morado oscuro
+\definecolor{AccentGray}{RGB}{245, 246, 250}       % Fondo claro
+\definecolor{TitleColor}{RGB}{21, 67, 96}          % Título oscuro
+\definecolor{SubtitleColor}{RGB}{93, 109, 126}     % Subtítulo
+
+%------------------------------------------------------------------------------
+% TEMA BEAMER PERSONALIZADO
+%------------------------------------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Estructura de colores
+\setbeamercolor{palette primary}{bg=DarkBlue, fg=white}
+\setbeamercolor{palette secondary}{bg=PastelBlue, fg=DarkBlue}
+\setbeamercolor{palette tertiary}{bg=DarkBlue!80, fg=white}
+\setbeamercolor{palette quaternary}{bg=DarkBlue, fg=white}
+
+\setbeamercolor{structure}{fg=DarkBlue}
+\setbeamercolor{frametitle}{bg=DarkBlue, fg=white}
+\setbeamercolor{frametitle right}{bg=PastelBlue}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=DarkBlue}
+\setbeamercolor{institute}{fg=SubtitleColor}
+\setbeamercolor{date}{fg=SubtitleColor}
+\setbeamercolor{background canvas}{bg=white}
+
+\setbeamercolor{block title}{bg=DarkBlue, fg=white}
+\setbeamercolor{block body}{bg=PastelBlue!30, fg=black}
+\setbeamercolor{block title alerted}{bg=DarkPurple, fg=white}
+\setbeamercolor{block body alerted}{bg=PastelPurple!40, fg=black}
+\setbeamercolor{block title example}{bg=DarkGreen, fg=white}
+\setbeamercolor{block body example}{bg=PastelGreen!40, fg=black}
+
+\setbeamercolor{itemize item}{fg=DarkBlue}
+\setbeamercolor{itemize subitem}{fg=DarkPurple}
+\setbeamercolor{enumerate item}{fg=DarkBlue}
+
+% Fuentes
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+
+% Eliminar barra de navegación
+\setbeamertemplate{navigation symbols}{}
+
+% Pie de página personalizado
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.33\paperwidth, ht=2.5ex, dp=1.5ex, leftskip=0.3cm]{palette primary}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.34\paperwidth, ht=2.5ex, dp=1.5ex, center]{palette secondary}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.33\paperwidth, ht=2.5ex, dp=1.5ex, rightskip=0.3cm, right]{palette primary}%
+      \usebeamerfont{date in head/foot}
+      \insertshortdate{}\hspace*{2em}
+      \insertframenumber{}/\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+% Encabezado de sección
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}[ht=3pt]{palette primary}
+  \end{beamercolorbox}
+}
+
+%------------------------------------------------------------------------------
+% CAJAS PERSONALIZADAS (tcolorbox)
+%------------------------------------------------------------------------------
+\tcbset{
+  formulabox/.style={
+    enhanced, breakable,
+    colback=PastelBlue!25,
+    colframe=DarkBlue,
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  },
+  definitionbox/.style={
+    enhanced, breakable,
+    colback=PastelGreen!30,
+    colframe=DarkGreen,
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  },
+  warningbox/.style={
+    enhanced, breakable,
+    colback=PastelOrange!40,
+    colframe=DarkPurple!80,
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  },
+  exercisebox/.style={
+    enhanced, breakable,
+    colback=PastelYellow!40,
+    colframe=DarkPurple,
+    fonttitle=\bfseries,
+    boxrule=1.5pt,
+    arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  },
+  comparisonbox/.style={
+    enhanced,
+    colback=AccentGray,
+    colframe=DarkBlue!60,
+    boxrule=1pt,
+    arc=4pt,
+    left=4pt, right=4pt, top=3pt, bottom=3pt
+  }
+}
+
+%------------------------------------------------------------------------------
+% ESTILOS DE CÓDIGO (listings)
+%------------------------------------------------------------------------------
+\lstdefinelanguage{mdpfile}{%
+  morecomment=[l]{;}%
+}
+\lstdefinestyle{bashstyle}{%
+  language=bash,
+  basicstyle=\ttfamily\tiny,
+  keywordstyle=\color{DarkBlue}\bfseries,
+  commentstyle=\color{DarkGreen!70}\itshape,
+  stringstyle=\color{DarkPurple},
+  backgroundcolor=\color{AccentGray},
+  frame=single, framerule=0.4pt, rulecolor=\color{PastelBlue},
+  breaklines=true, breakatwhitespace=true,
+  showstringspaces=false, tabsize=2,
+  xleftmargin=3pt, xrightmargin=3pt
+}
+\lstdefinestyle{mdpstyle}{%
+  language=mdpfile,
+  basicstyle=\ttfamily\tiny,
+  commentstyle=\color{DarkGreen!70}\itshape,
+  backgroundcolor=\color{PastelBlue!15},
+  frame=single, framerule=0.4pt, rulecolor=\color{PastelBlue},
+  breaklines=true, showstringspaces=false,
+  tabsize=2, xleftmargin=3pt, xrightmargin=3pt
+}
+
+%------------------------------------------------------------------------------
+% INFORMACIÓN DEL DOCUMENTO
+%------------------------------------------------------------------------------
+\title[Dinámica Molecular]{Dinámica Molecular}
+\subtitle{Principios, Métodos y Aplicaciones en Química Computacional}
+\author[J.M. Rodas R.]{Prof. José Mauricio Rodas Rodríguez}
+\institute[U. Caldas]{Universidad de Caldas \\ Departamento de Química \\ \textit{Introducción a la Química Computacional (173G7G)}}
+\date{\today}
+
+%==============================================================================
+\begin{document}
+%==============================================================================
+
+%------------------------------------------------------------------------------
+% DIAPOSITIVA TÍTULO
+%------------------------------------------------------------------------------
+\begin{frame}[plain]
+\titlepage
+\vspace{-1em}
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    % Representación esquemática de partículas en MD
+    \foreach \x/\y/\c in {
+      0/0/PastelBlue, 1.2/0.3/PastelGreen, 0.5/1/PastelPurple,
+      2/0.8/PastelOrange, 1.5/1.5/PastelTeal, 2.8/0.2/PastelRed,
+      3.2/1.2/PastelYellow, 0.2/2/PastelBlue!60}{
+      \node[circle, fill=\c, draw=DarkBlue!40, minimum size=14pt] at (\x,\y) {};
+    }
+    % Flechas de velocidad
+    \draw[->, thick, DarkBlue!70] (0,0) -- (0.4, 0.3);
+    \draw[->, thick, DarkGreen!70] (1.2,0.3) -- (0.8, 0.7);
+    \draw[->, thick, DarkPurple!70] (0.5,1) -- (0.9, 1.3);
+    \draw[->, thick, DarkBlue!50] (2,0.8) -- (2.5, 0.6);
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+%------------------------------------------------------------------------------
+% TABLA DE CONTENIDOS
+%------------------------------------------------------------------------------
+\begin{frame}{Contenido}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\tableofcontents[hideallsubsections, sections={1-5}]
+\column{0.5\textwidth}
+\tableofcontents[hideallsubsections, sections={6-9}]
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Fundamentos de Dinámica Molecular}
+%==============================================================================
+
+\begin{frame}{¿Qué es la Dinámica Molecular?}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{tcolorbox}[definitionbox, title={Definición}]
+La \textbf{Dinámica Molecular (MD)} es una técnica de simulación computacional que resuelve las ecuaciones de movimiento de Newton para un conjunto de átomos o moléculas en función del tiempo.
+\end{tcolorbox}
+\vspace{0.5em}
+\begin{itemize}
+  \item Permite estudiar el \textbf{comportamiento dinámico} de sistemas a escala atómica
+  \item Proporciona información estructural, termodinámica y cinética
+  \item Escala de tiempo: fs a $\mu$s; escala espacial: Å a nm
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{tcolorbox}[formulabox, title={Ecuación de Newton}]
+\[
+m_i \ddot{\mathbf{r}}_i = \mathbf{F}_i = -\nabla_i U(\mathbf{r}^N)
+\]
+\small
+donde $U(\mathbf{r}^N)$ es la energía potencial del sistema de $N$ partículas.
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[warningbox, title={Hipótesis clave}]
+\small
+\begin{itemize}
+  \item Núcleos tratados clásicamente
+  \item Electrones implícitos (campo de fuerzas)
+  \item Superficie de Born-Oppenheimer
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[shrink=15]{Campo de Fuerzas: Energía Potencial}
+\begin{tcolorbox}[formulabox, title={Función de Energía Potencial Total}]
+\scriptsize
+\begin{align*}
+U &= \underbrace{\sum_{\text{enlaces}} \frac{k_b}{2}(b - b_0)^2}_{\text{enlace}}
+  + \underbrace{\sum_{\text{ángulos}} \frac{k_\theta}{2}(\theta - \theta_0)^2}_{\text{ángulo}}
+  + \underbrace{\sum_{\text{diedros}} \frac{V_n}{2}[1+\cos(n\phi - \delta)]}_{\text{torsión}} \\
+  &\quad + \underbrace{\sum_{i<j} 4\varepsilon_{ij}\!\left[\left(\frac{\sigma_{ij}}{r_{ij}}\right)^{12}\!-\!\left(\frac{\sigma_{ij}}{r_{ij}}\right)^{6}\right]}_{\text{Lennard-Jones}}
+  + \underbrace{\sum_{i<j} \frac{q_i q_j}{4\pi\varepsilon_0 r_{ij}}}_{\text{Coulomb}}
+\end{align*}
+\end{tcolorbox}
+
+\vspace{0.1em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Términos ligados (bonded)}
+  \begin{itemize}
+    \item Estiramiento de enlace ($k_b$, $b_0$)
+    \item Flexión de ángulo ($k_\theta$, $\theta_0$)
+    \item Torsión y diedros impropios ($V_n$, $\phi$, $\delta$)
+  \end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Términos no ligados (non-bonded)}
+  \begin{itemize}
+    \item Van der Waals: potencial LJ ($\varepsilon$, $\sigma$)
+    \item Electrostático: cargas parciales ($q_i$)
+    \item Cutoff o suma de Ewald
+  \end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Potencial de Lennard-Jones}
+\begin{columns}[T]
+\column{0.44\textwidth}
+\begin{tcolorbox}[formulabox, title={Potencial LJ 12-6}]
+\[
+U_{LJ}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6}\right]
+\]
+\small
+\begin{itemize}
+  \item $\varepsilon$: profundidad del pozo de energía
+  \item $\sigma$: distancia donde $U_{LJ}=0$
+  \item $r_{min} = 2^{1/6}\sigma$: mínimo del potencial
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.53\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+  width=7cm, height=5.5cm,
+  xlabel={$r/\sigma$},
+  ylabel={$U/\varepsilon$},
+  xmin=0.85, xmax=2.8,
+  ymin=-1.5, ymax=3,
+  ymajorgrids=true, xmajorgrids=true,
+  grid style={gray!20},
+  axis lines=left,
+  tick label style={font=\tiny},
+  label style={font=\small},
+  title style={font=\small},
+  title={Potencial de Lennard-Jones}
+]
+\addplot[thick, color=DarkBlue, domain=0.9:2.8, samples=100]{4*(x^(-12) - x^(-6))};
+\addplot[dashed, color=DarkPurple, domain=0.9:2.8]{0};
+\addplot[dotted, color=DarkGreen, domain=0.9:2.8]{-1};
+\node[font=\tiny, color=DarkGreen] at (axis cs:2.3,-1.2) {$-\varepsilon$};
+\node[font=\tiny, color=DarkBlue] at (axis cs:1.3,2.5) {$U_{LJ}$};
+\end{axis}
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Distribución de Maxwell-Boltzmann}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{tcolorbox}[formulabox, title={Distribución de velocidades}]
+\[
+f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\!\left(-\frac{mv^2}{2k_BT}\right)
+\]
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{itemize}
+  \item Velocidad más probable: $v_p = \sqrt{\dfrac{2k_BT}{m}}$
+  \item Velocidad media: $\bar{v} = \sqrt{\dfrac{8k_BT}{\pi m}}$
+  \item Velocidad cuadrática media: $v_{rms} = \sqrt{\dfrac{3k_BT}{m}}$
+  \item Temperatura: $T = \dfrac{2\langle E_k \rangle}{3 N k_B}$
+\end{itemize}
+
+\column{0.50\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+  width=7cm, height=5.5cm,
+  xlabel={Velocidad (m/s)},
+  ylabel={$f(v)$ (u.a.)},
+  xmin=0, xmax=1000,
+  ymin=0,
+  ymajorgrids=true, xmajorgrids=true,
+  grid style={gray!20},
+  axis lines=left,
+  tick label style={font=\tiny},
+  label style={font=\small},
+  title={Maxwell-Boltzmann ($N_2$)},
+  title style={font=\small},
+  legend style={font=\tiny, at={(0.98,0.98)}, anchor=north east}
+]
+\addplot[thick, DarkBlue, domain=0:1000, samples=200]{4*3.14159*(28.014e-3/(2*3.14159*8.314*300))^(1.5) * x^2 * exp(-28.014e-3*x^2/(2*8.314*300)) * 1e8};
+\addlegendentry{300 K}
+\addplot[thick, DarkPurple, dashed, domain=0:1000, samples=200]{4*3.14159*(28.014e-3/(2*3.14159*8.314*700))^(1.5) * x^2 * exp(-28.014e-3*x^2/(2*8.314*700)) * 1e8};
+\addlegendentry{700 K}
+\end{axis}
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Algoritmos de Integración}
+%==============================================================================
+
+\begin{frame}{Algoritmo de Verlet}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{tcolorbox}[formulabox, title={Expansión de Taylor}]
+\small
+\begin{align*}
+\mathbf{r}(t+\Delta t) &= \mathbf{r}(t) + \mathbf{v}(t)\Delta t + \frac{\mathbf{F}(t)}{2m}\Delta t^2 \\
+\mathbf{r}(t-\Delta t) &= \mathbf{r}(t) - \mathbf{v}(t)\Delta t + \frac{\mathbf{F}(t)}{2m}\Delta t^2
+\end{align*}
+\textbf{Sumando:}
+\[
+\mathbf{r}(t+\Delta t) = 2\mathbf{r}(t) - \mathbf{r}(t-\Delta t) + \frac{\mathbf{F}(t)}{m}\Delta t^2
+\]
+\textbf{Velocidades:}
+\[
+\mathbf{v}(t) = \frac{\mathbf{r}(t+\Delta t) - \mathbf{r}(t-\Delta t)}{2\Delta t}
+\]
+\end{tcolorbox}
+
+\column{0.45\textwidth}
+\begin{tcolorbox}[warningbox, title={Propiedades}]
+\small
+\begin{itemize}
+  \item Error local: $\mathcal{O}(\Delta t^4)$
+  \item Error global: $\mathcal{O}(\Delta t^2)$
+  \item \textbf{Simpléctico} (conserva volumen de fase)
+  \item Reversible en el tiempo
+  \item No almacena velocidades explícitamente
+\end{itemize}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[definitionbox, title={Paso de tiempo típico}]
+\small
+$\Delta t \sim 1\text{--}2$ fs para \ch{H} \newline
+$\Delta t \sim 2$ fs con restricciones \newline
+$\Delta t \sim 4\text{--}8$ fs con H-virtual
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[shrink=25]{Velocity-Verlet y Leap-Frog}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={Velocity-Verlet \normalfont\scriptsize(3 pasos)}, equal height group=ehg-vv-eq]
+\small
+\begin{align*}
+\mathbf{v}(t+\tfrac{\Delta t}{2}) &= \textcolor{DarkPurple}{\mathbf{v}(t)}
+    + \frac{\mathbf{F}(t)\,\Delta t}{2m} \\
+\mathbf{r}(t+\Delta t) &= \mathbf{r}(t) + \mathbf{v}(t+\tfrac{\Delta t}{2})\,\Delta t \\
+\mathbf{v}(t+\Delta t) &= \mathbf{v}(t+\tfrac{\Delta t}{2})
+    + \frac{\mathbf{F}(t+\Delta t)\,\Delta t}{2m}
+\end{align*}
+\end{tcolorbox}
+\vspace{0.2em}
+\begin{tcolorbox}[definitionbox, title={Propiedades}, equal height group=ehg-vv-pr]
+\small
+\begin{itemize}
+  \item Parte de \textcolor{DarkPurple}{$\mathbf{v}(t)$} en paso \textbf{entero}
+  \item $\mathbf{r}(t)$ y $\mathbf{v}(t)$ disponibles \textbf{simultáneamente}
+  \item Evalúa $\mathbf{F}$ \textbf{dos veces} por paso ($t$ y $t{+}\Delta t$)
+  \item GROMACS \texttt{md-vv}, NAMD
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[warningbox, title={Leap-Frog \normalfont\scriptsize(2 pasos)}, equal height group=ehg-vv-eq]
+\small
+\begin{align*}
+\mathbf{v}(t+\tfrac{\Delta t}{2}) &= \textcolor{DarkGreen}{\mathbf{v}(t-\tfrac{\Delta t}{2})}
+    + \frac{\mathbf{F}(t)\,\Delta t}{m} \\[4pt]
+\mathbf{r}(t+\Delta t) &= \mathbf{r}(t) + \mathbf{v}(t+\tfrac{\Delta t}{2})\,\Delta t
+\end{align*}
+\end{tcolorbox}
+\vspace{0.2em}
+\begin{tcolorbox}[definitionbox, title={Propiedades}, equal height group=ehg-vv-pr]
+\small
+\begin{itemize}
+  \item Parte de \textcolor{DarkGreen}{$\mathbf{v}(t-\tfrac{\Delta t}{2})$} en paso \textbf{medio}
+  \item $\mathbf{r}(t)$ y $\mathbf{v}(t)$ en \textbf{instantes distintos} ($\Delta t/2$)
+  \item Evalúa $\mathbf{F}$ \textbf{una sola vez} por paso (más eficiente)
+  \item Estándar GROMACS \texttt{md}
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+
+\vspace{0.1em}
+% Diagrama de línea temporal
+\begin{center}
+\begin{tikzpicture}[scale=0.72]
+  % eje de tiempo
+  \draw[->,gray!50,thin] (1.7,0)--(11.4,0)
+    node[right,font=\tiny,gray]{tiempo};
+  % marcas en pasos enteros
+  \foreach \x/\lab in {2.5/{t-\Delta t},6.5/{t},10.5/{t+\Delta t}}{
+    \draw[gray!50,thin](\x,-.05)--(\x,.05);
+    \node[font=\tiny,gray,below=1pt] at (\x,0){$\lab$};
+  }
+  % marcas en pasos medios (punteadas)
+  \foreach \x/\lab in {4.5/{t-\frac{\Delta t}{2}},8.5/{t+\frac{\Delta t}{2}}}{
+    \draw[gray!40,dashed,thin](\x,-.05)--(\x,.05);
+    \node[font=\tiny,gray!60,below=1pt] at (\x,0){$\lab$};
+  }
+  % VV: r y v en pasos enteros alineados
+  \node[left,font=\tiny\bfseries,DarkBlue] at (1.7,.55){VV};
+  \draw[DarkBlue!40,thin](2.5,.40)--(10.5,.40);
+  \draw[DarkPurple!50,thin](2.5,.65)--(10.5,.65);
+  \foreach \x in {2.5,6.5,10.5}{
+    \fill[DarkBlue](\x,.40) circle(2pt);
+    \fill[DarkPurple](\x,.65) circle(2pt);
+  }
+  \node[right,font=\tiny,DarkBlue] at (10.65,.40){$\mathbf{r}$};
+  \node[right,font=\tiny,DarkPurple] at (10.65,.65){$\mathbf{v}$};
+  % LF: r en pasos enteros, v en pasos medios (desfasado)
+  \node[left,font=\tiny\bfseries,DarkGreen] at (1.7,-.55){LF};
+  \draw[DarkBlue!40,thin](2.5,-.40)--(10.5,-.40);
+  \draw[DarkGreen!60,thin](4.5,-.65)--(8.5,-.65);
+  \foreach \x in {2.5,6.5,10.5}{\fill[DarkBlue](\x,-.40) circle(2pt);}
+  \foreach \x in {4.5,8.5}{\fill[DarkGreen](\x,-.65) circle(2pt);}
+  \node[right,font=\tiny,DarkBlue] at (10.65,-.40){$\mathbf{r}$};
+  \draw[->,DarkGreen!70,thin](4.5,-.65) to[bend left=20]
+    node[above,font=\tiny,DarkGreen]{salto $\Delta t$}(8.5,-.65);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Flujo de Trabajo de un Paso MD}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.5cm,
+  process/.style={rectangle, rounded corners=5pt, minimum width=3.2cm, minimum height=0.6cm,
+    text centered, font=\small, draw=DarkBlue, fill=PastelBlue!50},
+  decision/.style={diamond, minimum width=2.2cm, minimum height=0.5cm,
+    text centered, font=\small, draw=DarkPurple, fill=PastelPurple!40, aspect=3},
+  arrow/.style={->, thick, DarkBlue}
+]
+
+\node[process, fill=PastelGreen!60] (init) {Posiciones $\mathbf{r}(t)$, velocidades $\mathbf{v}(t)$};
+\node[process, below=of init] (forces) {Calcular fuerzas $\mathbf{F}_i = -\nabla_i U$};
+\node[process, below=of forces] (integrate) {Integrar: $\mathbf{r}(t{+}\Delta t)$, $\mathbf{v}(t{+}\Delta t)$};
+\node[process, below=of integrate] (thermo) {Aplicar termostato/barostato};
+\node[decision, below=of thermo] (check) {¿$t \geq t_{max}$?};
+\node[process, right=2.8cm of check, fill=PastelOrange!50] (output) {Guardar trayectoria};
+\node[process, below=of check, fill=PastelGreen!60] (end) {Análisis y resultados};
+
+\draw[arrow] (init) -- (forces);
+\draw[arrow] (forces) -- (integrate);
+\draw[arrow] (integrate) -- (thermo);
+\draw[arrow] (thermo) -- (check);
+\draw[arrow] (check) -- node[right, font=\scriptsize]{Sí} (end);
+\draw[arrow] (check) -- node[above, font=\scriptsize]{Guardar} (output);
+\draw[arrow] (output) |- (forces);
+\draw[arrow] (check.west) -- ++(-1.0,0) |- node[left, font=\scriptsize, near start]{No} (forces.west);
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%==============================================================================
+\section{Condiciones de Contorno y Ensambles}
+%==============================================================================
+
+\begin{frame}{Condiciones Periódicas de Contorno (PBC)}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{block}{¿Por qué PBC?}
+  \begin{itemize}
+    \item Elimina efectos de borde artificiales
+    \item Simula sistema "infinito" con $N$ finito
+    \item Conserva la densidad correcta
+    \item Permite calcular propiedades del bulto
+  \end{itemize}
+\end{block}
+\vspace{0.3em}
+\begin{tcolorbox}[formulabox, title={Convención de imagen mínima}]
+\small
+\[
+\Delta x_{ij} = \Delta x_{ij} - L_x \cdot \text{round}\!\left(\frac{\Delta x_{ij}}{L_x}\right)
+\]
+La distancia más corta entre dos partículas se calcula usando la copia de imagen más cercana.
+\end{tcolorbox}
+
+\column{0.45\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+% Celdas vecinas
+\foreach \dx in {-1,0,1}{
+  \foreach \dy in {-1,0,1}{
+    \draw[gray!30, thin] (\dx*2.0, \dy*2.0) rectangle ++(2.0,2.0);
+    \ifnum\dx=0
+      \ifnum\dy=0
+        \draw[DarkBlue, thick] (\dx*2.0, \dy*2.0) rectangle ++(2.0,2.0);
+      \fi
+    \fi
+  }
+}
+% Partículas en la celda central
+\foreach \px/\py in {0.4/0.5, 1.2/1.1, 0.8/1.7, 1.6/0.4}{
+  \node[circle, fill=PastelBlue, draw=DarkBlue, minimum size=8pt] at (\px*2.0+0.0, \py*2.0-2.0+0.0) {};
+}
+% Imágenes
+\node[circle, fill=PastelBlue!40, draw=DarkBlue!40, minimum size=8pt] at (0.4*2-2, 0.5*2-2+2) {};
+\node[circle, fill=PastelBlue!40, draw=DarkBlue!40, minimum size=8pt] at (0.4*2+2, 0.5*2-2) {};
+\node[font=\tiny, DarkBlue] at (1.0, -0.3) {Celda principal};
+\end{tikzpicture}
+\end{center}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Ensambles Estadísticos}
+
+\begin{columns}[T]
+\column{0.32\textwidth}
+\begin{tcolorbox}[formulabox, title={NVE (Microcanónico)}, equal height group=ehg-ens]
+\small
+\centering
+$N$, $V$, $E$ = constantes \\[4pt]
+\[
+\mathcal{H} = K + U = E
+\]
+\vspace{2pt}
+\begin{itemize}\small
+  \item Sin intercambio de calor
+  \item Dinámica newtoniana pura
+  \item Validación de integradores
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.32\textwidth}
+\begin{tcolorbox}[definitionbox, title={NVT (Canónico)}, equal height group=ehg-ens]
+\small
+\centering
+$N$, $V$, $T$ = constantes \\[4pt]
+\[
+Z = \int e^{-\beta H}\,d\mathbf{r}\,d\mathbf{p}
+\]
+\vspace{2pt}
+\begin{itemize}\small
+  \item Termostato activo
+  \item Función de partición canónica
+  \item Más común en práctica
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.32\textwidth}
+\begin{tcolorbox}[warningbox, title={NPT (Isotérmico-isob.)}, equal height group=ehg-ens]
+\small
+\centering
+$N$, $P$, $T$ = constantes \\[4pt]
+\[
+\Delta G = \Delta H - T\Delta S
+\]
+\vspace{2pt}
+\begin{itemize}\small
+  \item Termostato + barostato
+  \item Densidad variable
+  \item Condiciones experimentales
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+
+\vspace{0.5em}
+\begin{tcolorbox}[comparisonbox]
+\centering\small
+\textbf{Uso recomendado:} NVT para equilibración $\rightarrow$ NPT para producción en sistemas condensados
+\end{tcolorbox}
+\end{frame}
+
+%==============================================================================
+\section{Termostatos y Barostatos}
+%==============================================================================
+
+\begin{frame}{Termostatos}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={Berendsen}]
+\small
+\[
+\frac{dT}{dt} = \frac{T_0 - T}{\tau_T}
+\]
+\[
+\lambda = \sqrt{1 + \frac{\Delta t}{\tau_T}\left(\frac{T_0}{T} - 1\right)}
+\]
+{\scriptsize Escalado débil: no genera ensamble NVT correcto. Rápida estabilización.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[definitionbox, title={Velocidad de rescalado (v-rescale)}]
+\small
+Añade término estocástico a Berendsen para recuperar ensamble canónico correcto. Recomendado en GROMACS.
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[warningbox, title={Nosé-Hoover}]
+\small
+Extiende el Hamiltoniano con variable ficticia $s$:
+\[
+\mathcal{H}_{NH} = \sum_i \frac{p_i^2}{2m_i s^2} + U + \frac{p_s^2}{2Q} + g k_B T \ln s
+\]
+Ecuaciones de movimiento extendidas:
+\begin{align*}
+\dot{\mathbf{r}}_i &= \frac{\mathbf{p}_i}{m_i} \\
+\dot{\mathbf{p}}_i &= \mathbf{F}_i - \xi \mathbf{p}_i \\
+\dot{\xi} &= \frac{1}{Q}\left(\sum_i \frac{p_i^2}{m_i} - g k_B T\right)
+\end{align*}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Barostatos}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={Barostato de Berendsen}, equal height group=ehg-bar-a]
+\small
+\[
+\frac{dP}{dt} = \frac{P_0 - P}{\tau_P}
+\]
+\[
+\mu = \left[1 - \frac{\kappa_T \Delta t}{\tau_P}(P_0 - P)\right]^{1/3}
+\]
+Escala coordenadas y caja: $\mathbf{r} \rightarrow \mu\mathbf{r}$, $L \rightarrow \mu L$
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{itemize}
+  \item $\kappa_T$: compresibilidad isotérmica
+  \item Convergencia rápida al equilibrio
+  \item No genera ensamble NPT correcto
+\end{itemize}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[warningbox, title={Barostato de Parrinello-Rahman}, equal height group=ehg-bar-a]
+\small
+Generaliza la caja con tensor $\mathbf{h}$:
+\[
+\ddot{\mathbf{h}} = \frac{V}{W}\left(\mathbf{P} - P_0\mathbf{I}\right)\mathbf{h}^{-T}
+\]
+\begin{itemize}
+  \item $W$: masa ficticia de la caja
+  \item Permite cambio de forma y tamaño
+  \item Genera ensamble NPT correcto
+  \item Recomendado para producción
+\end{itemize}
+\end{tcolorbox}
+\vspace{0.2em}
+\begin{tcolorbox}[definitionbox, title={Secuencia típica}]
+\scriptsize
+Berendsen (equilibración) $\rightarrow$ Parrinello-Rahman (producción)
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Preparación de Sistemas}
+%==============================================================================
+
+\begin{frame}{Protocolo de Preparación de una Simulación}
+
+\begin{center}
+\resizebox{0.98\textwidth}{!}{
+\begin{tikzpicture}[
+  node distance=0.35cm and 1.1cm,
+  pstep/.style={rectangle, rounded corners=4pt, minimum width=2.5cm, minimum height=0.75cm,
+    text width=2.4cm, align=center, font=\footnotesize, draw=DarkBlue, fill=PastelBlue!40},
+  arrow/.style={->, thick, DarkBlue}
+]
+\node[pstep, fill=PastelGreen!60] (pdb) {1. Obtener estructura (PDB/AlphaFold)};
+\node[pstep, right=of pdb] (clean) {2. Limpiar PDB (eliminar HETATM)};
+\node[pstep, right=of clean] (ff) {3. Asignar campo de fuerzas};
+\node[pstep, right=of ff] (box) {4. Definir caja de simulación};
+
+\node[pstep, below=1.4cm of box] (solv) {5. Solvatación (añadir agua)};
+\node[pstep, left=of solv] (ions) {6. Neutralizar (añadir iones)};
+\node[pstep, left=of ions] (em) {7. Minimización de energía};
+\node[pstep, left=of em, fill=PastelOrange!50] (eq) {8. Equilibración NVT / NPT};
+
+\node[pstep, below=1.4cm of eq, fill=PastelYellow!60] (prod) {9. Producción (trayectoria)};
+\node[pstep, right=of prod] (traj) {10. Guardar trayectoria};
+\node[pstep, right=of traj, fill=PastelGreen!60] (analysis) {11. Análisis (RMSD, RMSF...)};
+
+\draw[arrow] (pdb) -- (clean);
+\draw[arrow] (clean) -- (ff);
+\draw[arrow] (ff) -- (box);
+\draw[arrow] (box) -- (solv);
+\draw[arrow] (solv) -- (ions);
+\draw[arrow] (ions) -- (em);
+\draw[arrow] (em) -- (eq);
+\draw[arrow] (eq) -- (prod);
+\draw[arrow] (prod) -- (traj);
+\draw[arrow] (traj) -- (analysis);
+\end{tikzpicture}
+}
+\end{center}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Modelos de Agua}
+
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{table}[h]
+\centering
+\footnotesize
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Modelo} & \textbf{Sitios} & \textbf{Carga O} & \textbf{Ángulo} & \textbf{Uso} \\
+\midrule
+SPC      & 3 & $-0.82e$ & $109.47°$ & General \\
+SPC/E    & 3 & $-0.8476e$ & $109.47°$ & \textbf{Estándar} \\
+TIP3P    & 3 & $-0.834e$ & $104.52°$ & CHARMM \\
+TIP4P    & 4 & $-1.04e$ & $104.52°$ & Mejorado \\
+TIP4P/2005 & 4 & $-1.1128e$ & $104.52°$ & Mejor \\
+TIP5P    & 5 & --- & $104.52°$ & Propiedades \\
+OPC      & 4 & $-1.3582e$ & $103.6°$ & DNN \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\column{0.42\textwidth}
+\begin{tcolorbox}[definitionbox, title={Recomendaciones}]
+\small
+\begin{itemize}
+  \item \textbf{SPC/E}: uso general, buenas propiedades de difusión
+  \item \textbf{TIP3P}: compatible con CHARMM/AMBER
+  \item \textbf{TIP4P/2005}: mejores propiedades termofísicas
+  \item \textbf{OPC}: alta precisión para biomoléculas
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Campos de Fuerzas}
+%==============================================================================
+
+\begin{frame}{Principales Campos de Fuerzas}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Para Proteínas y Biomoléculas}
+  \begin{itemize}
+    \item \textbf{AMBER}: ff14SB, ff19SB, GAFF (ligandos)
+    \item \textbf{CHARMM}: CHARMM36, CGenFF
+    \item \textbf{OPLS}: OPLS-AA, OPLS3e, OPLS4
+    \item \textbf{GROMOS}: 54A7, 54A8
+  \end{itemize}
+\end{block}
+\vspace{0.3em}
+\begin{tcolorbox}[warningbox, title={Para moléculas pequeñas}, equal height group=ehg-ff-b]
+\small
+\begin{itemize}
+  \item \textbf{GAFF2}: AMBER para ligandos
+  \item \textbf{CGenFF}: CHARMM general
+  \item \textbf{OPLS3e}: pequeñas moléculas
+  \item \textbf{OpenFF}: Sage, Parsley
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{block}{Para Materiales y Polímeros}
+  \begin{itemize}
+    \item \textbf{DREIDING}: moléculas orgánicas
+    \item \textbf{UFF}: fuerza universal (todos los átomos)
+    \item \textbf{ReaxFF}: bonds reactivos
+    \item \textbf{Lennard-Jones}: gases nobles
+  \end{itemize}
+\end{block}
+\vspace{0.3em}
+\begin{tcolorbox}[definitionbox, title={Validación crítica}, equal height group=ehg-ff-b]
+\small
+Un campo de fuerzas incorrecto produce \textbf{resultados erróneos}. Siempre verificar:
+\begin{enumerate}
+  \item Compatibilidad con el sistema
+  \item Literatura de referencia
+  \item Propiedades reproducidas
+\end{enumerate}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Análisis de Trayectorias}
+%==============================================================================
+
+\begin{frame}{Métricas de Análisis: RMSD y RMSF}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={RMSD (Desviación Cuadrática Media)}, equal height group=ehg-rmsd]
+\[
+\text{RMSD}(t) = \sqrt{\frac{1}{N}\sum_{i=1}^{N} m_i \left|\mathbf{r}_i(t) - \mathbf{r}_i^{\text{ref}}\right|^2}
+\]
+\small
+\begin{itemize}
+  \item Mide estabilidad global de la proteína
+  \item Se calcula respecto a estructura de referencia
+  \item Plateau indica equilibrio
+  \item Unidades: Å o nm
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={RMSF (Fluctuación Cuadrática Media)}, equal height group=ehg-rmsd]
+\[
+\text{RMSF}_i = \sqrt{\langle \left|\mathbf{r}_i(t) - \langle\mathbf{r}_i\rangle\right|^2 \rangle_t}
+\]
+\small
+\begin{itemize}
+  \item Mide flexibilidad por residuo
+  \item Regiones de alta RMSF = loops o terminales
+  \item Correlaciona con factores B cristalográficos
+  \item Herramienta: \texttt{gmx rmsf}, MDAnalysis
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Otras Métricas Importantes}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={Radio de Giro ($R_g$)}, equal height group=ehg-met-a]
+\small
+\[
+R_g(t) = \sqrt{\frac{\sum_i m_i |\mathbf{r}_i - \mathbf{r}_{cm}|^2}{\sum_i m_i}}
+\]
+Indica compacidad de la proteína. Una proteína plegada tiene $R_g$ estable.
+\end{tcolorbox}
+\vspace{0.4em}
+\begin{tcolorbox}[definitionbox, title={Función de Distribución Radial}, equal height group=ehg-met-b]
+\small
+\[
+g(r) = \frac{V}{N^2}\left\langle \sum_i \sum_{j\neq i} \delta(r - r_{ij}) \right\rangle
+\]
+Estructura de líquidos y solvatación.
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[warningbox, title={Puentes de Hidrógeno}, equal height group=ehg-met-a]
+\small
+Criterio geométrico:
+\begin{itemize}
+  \item $d_{D\cdots A} \leq 3.5$ Å
+  \item $\angle_{D-H\cdots A} \geq 120°$
+\end{itemize}
+Indica estructura secundaria y estabilidad.
+\end{tcolorbox}
+\vspace{0.4em}
+\begin{tcolorbox}[formulabox, title={Coeficiente de difusión}, equal height group=ehg-met-b]
+\small
+Einstein:
+\[
+D = \lim_{t\to\infty} \frac{\langle |\mathbf{r}(t) - \mathbf{r}(0)|^2 \rangle}{6t}
+\]
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Comparación de Programas}
+%==============================================================================
+
+\begin{frame}{Principales Programas de MD}
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Característica} & 
+\cellcolor{PastelBlue!50}\textbf{GROMACS} & 
+\cellcolor{PastelGreen!50}\textbf{OpenMM} & 
+\cellcolor{PastelOrange!50}\textbf{NAMD} & 
+\cellcolor{PastelPurple!40}\textbf{AMBER} \\
+\midrule
+Licencia        & LGPL (libre)      & MIT (libre)        & Libre (académico) & Comercial \\
+Lenguaje        & C++/CUDA          & Python/C++/CUDA    & C++/TCL           & C/CUDA \\
+GPU support     & \checkmark Excelente & \checkmark Excelente & \checkmark Bueno  & \checkmark Excelente \\
+Interfaz        & Línea de comandos & Python API         & TCL/NAMD scripts  & Ambas \\
+Velocidad       & Muy alta          & Alta               & Alta              & Muy alta \\
+Escalabilidad   & Excelente HPC     & Media              & Excelente HPC     & Buena \\
+Campos de F.    & AMBER/CHARMM/OPLS & Todos              & CHARMM/AMBER      & AMBER/GAFF \\
+Análisis        & Herramientas propias & MDTraj/MDAnalysis & VMD/NAMD          & CPPTRAJ \\
+Documentación   & Excelente         & Buena              & Buena             & Buena \\
+Curva aprendizaje & Media           & Baja (Python)      & Media             & Media-alta \\
+\midrule
+\textbf{Mejor para} & Proteínas/membranas & Prototyping/ML & Simulaciones grandes & Bioquímica/AMBER FF \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.2em}
+\begin{tcolorbox}[comparisonbox]
+\scriptsize\centering
+\textbf{Recomendación para principiantes:} GROMACS (documentación + tutoriales) o OpenMM (Python, mayor flexibilidad)
+\end{tcolorbox}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Ecosistema de Herramientas MD}
+
+\begin{center}
+\begin{tikzpicture}[
+  tool/.style={rectangle, rounded corners=4pt, minimum width=2.2cm, minimum height=0.55cm,
+    text centered, font=\scriptsize, draw=DarkBlue!60},
+  category/.style={rectangle, rounded corners=6pt, minimum width=2.4cm, minimum height=0.6cm,
+    text centered, font=\small\bfseries, draw=DarkBlue, fill=DarkBlue, text=white},
+  arrow/.style={->, DarkBlue!60}
+]
+% Categorías
+\node[category] (prep) at (0,3) {Preparación};
+\node[category] (sim) at (3.5,3) {Simulación};
+\node[category] (anal) at (7,3) {Análisis};
+\node[category] (vis) at (10.5,3) {Visualización};
+
+% Herramientas
+\node[tool, fill=PastelGreen!50] (pdbfixer) at (0,2) {PDBFixer};
+\node[tool, fill=PastelGreen!40] (tleap) at (0,1.3) {tLEaP (AMBER)};
+\node[tool, fill=PastelGreen!40] (pdb2gmx) at (0,0.6) {pdb2gmx (GROMACS)};
+\node[tool, fill=PastelGreen!30] (charmm) at (0,-0.1) {CHARMM-GUI};
+
+\node[tool, fill=PastelBlue!50] (gromacs) at (3.5,2) {GROMACS};
+\node[tool, fill=PastelBlue!40] (openmm) at (3.5,1.3) {OpenMM};
+\node[tool, fill=PastelBlue!40] (namd) at (3.5,0.6) {NAMD};
+\node[tool, fill=PastelBlue!30] (amber) at (3.5,-0.1) {AMBER};
+
+\node[tool, fill=PastelOrange!50] (mdanalysis) at (7,2) {MDAnalysis};
+\node[tool, fill=PastelOrange!40] (mdtraj) at (7,1.3) {MDTraj};
+\node[tool, fill=PastelOrange!40] (cpptraj) at (7,0.6) {CPPTRAJ};
+\node[tool, fill=PastelOrange!30] (pytraj) at (7,-0.1) {pytraj};
+
+\node[tool, fill=PastelPurple!50] (vmd) at (10.5,2) {VMD};
+\node[tool, fill=PastelPurple!40] (pymol) at (10.5,1.3) {PyMOL};
+\node[tool, fill=PastelPurple!40] (nglview) at (10.5,0.6) {NGLView};
+\node[tool, fill=PastelPurple!30] (chimera) at (10.5,-0.1) {ChimeraX};
+
+% Flechas principales
+\draw[arrow, thick] (1.4,1) -- (2.3,1);
+\draw[arrow, thick] (4.9,1) -- (5.8,1);
+\draw[arrow, thick] (8.3,1) -- (9.3,1);
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%==============================================================================
+\section{Protocolo de Simulación de Proteínas}
+%==============================================================================
+
+\begin{frame}{Protocolo Completo: Simulación de Proteína}
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{enumerate}\small
+  \item[\faCheckCircle] \textbf{Descarga}: PDB / AlphaFold2
+  \item[\faCheckCircle] \textbf{Preparación}: PDBFixer, Modeller
+  \item[\faCheckCircle] \textbf{Campo de fuerzas}: AMBER ff14SB / CHARMM36
+  \item[\faCheckCircle] \textbf{Caja}: dodecaedro rómbico, 1.0 nm margen
+  \item[\faCheckCircle] \textbf{Solvatar}: SPC/E o TIP3P
+  \item[\faCheckCircle] \textbf{Neutralizar}: Na$^+$/Cl$^-$ a 0.15 M
+  \item[\faCheckCircle] \textbf{Minimizar}: 5000 pasos steepest descent
+  \item[\faCheckCircle] \textbf{Equilibrar NVT}: 100 ps, $T = 300$ K
+  \item[\faCheckCircle] \textbf{Equilibrar NPT}: 100 ps, $P = 1$ bar
+  \item[\faCheckCircle] \textbf{Producción}: 100 ns--1 $\mu$s
+\end{enumerate}
+
+\column{0.47\textwidth}
+\begin{tcolorbox}[formulabox, title={Parámetros típicos GROMACS}]
+\scriptsize\ttfamily
+integrator = md \\
+nsteps = 50000000 ; 100 ns \\
+dt = 0.002 ; 2 fs \\
+\textcolor{DarkGreen}{; Temperatura} \\
+tcoupl = V-rescale \\
+ref\_t = 300 \\
+tau\_t = 0.1 \\
+\textcolor{DarkGreen}{; Presión} \\
+pcoupl = Parrinello-Rahman \\
+ref\_p = 1.0 \\
+tau\_p = 2.0 \\
+\textcolor{DarkGreen}{; Interacciones} \\
+rcoulomb = 1.2 \\
+rvdw = 1.2 \\
+coulombtype = PME
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Técnicas Avanzadas}
+%==============================================================================
+
+\begin{frame}{Técnicas Avanzadas de MD}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Muestreo mejorado}
+  \begin{itemize}
+    \item \textbf{Metadinámica}: potencial de inundación gaussiana para superar barreras energéticas
+    \item \textbf{Umbrella sampling}: histogramas de fuerza con coordenadas de reacción
+    \item \textbf{Replica Exchange MD}: múltiples temperaturas en paralelo
+    \item \textbf{Steered MD}: fuerza externa para estudiar desenrollamiento
+  \end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Cálculo de propiedades termodinámicas}
+  \begin{itemize}
+    \item \textbf{Perturbación de energía libre (FEP)}: $\Delta G = -k_BT\ln\langle e^{-\beta\Delta U}\rangle$
+    \item \textbf{Integración termodinámica (TI)}: $\Delta G = \int_0^1 \langle \partial H/\partial\lambda\rangle\,d\lambda$
+    \item \textbf{MM-PBSA/GBSA}: energía libre de unión
+    \item \textbf{PMF}: potencial de fuerza media
+  \end{itemize}
+\end{block}
+\end{columns}
+\vspace{0.4em}
+\begin{tcolorbox}[formulabox, title={Energía libre de Gibbs (FEP)}]
+\[
+\Delta G_{A\to B} = -k_B T \ln \left\langle \exp\!\left(-\frac{\Delta U_{A\to B}}{k_B T}\right)\right\rangle_A
+\]
+\end{tcolorbox}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{MD con Aprendizaje Automático}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{block}{Machine Learning en MD}
+  \begin{itemize}
+    \item \textbf{Campos de fuerzas ML}: NequIP, MACE, ANI — precisión cuántica con velocidad clásica
+    \item \textbf{Potenciales neurales}: redes grafos moleculares para predicción de fuerzas
+    \item \textbf{MSM} (Markov State Models): identificación de estados conformacionales
+    \item \textbf{OpenMM-ML}: integración directa con PyTorch/TensorFlow
+  \end{itemize}
+\end{block}
+
+\column{0.45\textwidth}
+\begin{tcolorbox}[warningbox, title={Flujo ML-MD}]
+\small
+\begin{enumerate}
+  \item Generar datos QM (DFT/CCSD)
+  \item Entrenar potencial neural
+  \item Validar contra benchmarks
+  \item Simulación MD con potencial ML
+  \item Análisis y propiedades
+\end{enumerate}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Resumen y Perspectivas}
+%==============================================================================
+
+\begin{frame}[shrink=3]{Resumen: Lo que Aprendimos}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[definitionbox, title={\faAtom\ Fundamentos}, equal height group=ehg-res-a]
+\small
+\begin{itemize}
+  \item[$\checkmark$] Ecuaciones de Newton y campo de fuerzas
+  \item[$\checkmark$] Potencial de Lennard-Jones
+  \item[$\checkmark$] Distribución de Maxwell-Boltzmann
+  \item[$\checkmark$] Integradores: Verlet, V-Verlet, Leap-Frog
+\end{itemize}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[formulabox, title={\faFlask\ Práctica}, equal height group=ehg-res-b]
+\small
+\begin{itemize}
+  \item[$\checkmark$] PBC y convención de imagen mínima
+  \item[$\checkmark$] Ensambles NVE, NVT, NPT
+  \item[$\checkmark$] Termostatos y barostatos
+  \item[$\checkmark$] Preparación y protocolo de simulación
+\end{itemize}
+\end{tcolorbox}
+
+\column{0.48\textwidth}
+\begin{tcolorbox}[warningbox, title={\faChartBar\ Análisis}, equal height group=ehg-res-a]
+\small
+\begin{itemize}
+  \item[$\checkmark$] RMSD, RMSF, $R_g$, RDF
+  \item[$\checkmark$] Puentes de hidrógeno
+  \item[$\checkmark$] Coeficiente de difusión
+  \item[$\checkmark$] MDAnalysis y MDTraj (Python)
+\end{itemize}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[definitionbox, title={\faLaptopCode\ Herramientas}, equal height group=ehg-res-b]
+\small
+\begin{itemize}
+  \item[$\checkmark$] GROMACS, OpenMM, NAMD, AMBER
+  \item[$\checkmark$] Campos de fuerzas: AMBER, CHARMM, OPLS
+  \item[$\checkmark$] Modelos de agua: SPC/E, TIP3P
+  \item[$\checkmark$] Técnicas avanzadas: FEP, metadinámica
+\end{itemize}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}{Perspectivas y Tendencias Actuales}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Tendencias 2024--2025}
+  \begin{itemize}
+    \item \textbf{MD asistida por IA}: AlphaFold + MD
+    \item \textbf{Potenciales neurales}: MACE, NequIP, ANI2x
+    \item \textbf{Simulaciones de larga escala}: ms con Anton 3
+    \item \textbf{Coarse-graining con ML}: modelos Martini + ML
+    \item \textbf{Enhanced sampling}: OPES, on-the-fly ML
+  \end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Aplicaciones emergentes}
+  \begin{itemize}
+    \item Diseño racional de fármacos
+    \item Dinámica de anticuerpos y nanoanticuerpos
+    \item Materiales 2D y polímeros conductores
+    \item Sistemas de membrana complejos
+    \item Simulación de virus completos
+  \end{itemize}
+\end{block}
+\end{columns}
+
+\vspace{0.5em}
+\begin{tcolorbox}[comparisonbox]
+\centering\small
+\textbf{Recursos recomendados:} GROMACS tutorials (Lemkul), OpenMM cookbook, \textit{Understanding Molecular Simulation} (Frenkel \& Smit), \textit{Computer Simulation of Liquids} (Allen \& Tildesley)
+\end{tcolorbox}
+\end{frame}
+
+%==============================================================================
+\section{Instalación de GROMACS}
+%==============================================================================
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=8]{Instalación de GROMACS en Ubuntu/Linux}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[definitionbox, title={Prerrequisitos}]
+\begin{lstlisting}[style=bashstyle]
+sudo apt update && sudo apt install -y \
+  build-essential cmake wget \
+  libfftw3-dev libopenmpi-dev \
+  openmpi-bin libhwloc-dev
+# Verificar versiones minimas
+cmake --version   # >= 3.18
+gcc --version     # >= 7
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[warningbox, title={Opción rápida: paquete apt}]
+\begin{lstlisting}[style=bashstyle]
+# Ubuntu 22.04/24.04 (version del repo)
+sudo apt install -y gromacs gromacs-data
+gmx --version
+# Puede ser una version mas antigua (2022.x)
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={Opción recomendada: compilar GROMACS 2024.2}]
+\begin{lstlisting}[style=bashstyle]
+wget https://ftp.gromacs.org/gromacs/gromacs-2024.2.tar.gz
+tar -xzf gromacs-2024.2.tar.gz
+cd gromacs-2024.2 && mkdir build && cd build
+cmake .. \
+  -DGMX_BUILD_OWN_FFTW=ON \
+  -DGMX_GPU=OFF \
+  -DCMAKE_BUILD_TYPE=Release
+make -j4
+sudo make install
+# Activar en sesion actual
+source /usr/local/gromacs/bin/GMXRC
+# Activar permanentemente
+echo 'source /usr/local/gromacs/bin/GMXRC' \
+  >> ~/.bashrc && source ~/.bashrc
+gmx --version
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small\textbf{Con GPU (CUDA):} añadir \texttt{-DGMX\_GPU=CUDA} \\y tener instalado \texttt{nvidia-cuda-toolkit}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=8]{Instalación de GROMACS en Google Colab}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[warningbox, title={Opción 1: conda-forge (recomendada, \textasciitilde{}2 min)}]
+\begin{lstlisting}[style=bashstyle]
+# Celda 1 (Python): instalar condacolab
+!pip install -q condacolab
+import condacolab
+condacolab.install()  # reinicia el kernel
+\end{lstlisting}
+\begin{lstlisting}[style=bashstyle]
+# Celda 2 (Python): instalar GROMACS
+!conda install -c conda-forge gromacs -y
+!gmx --version
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[definitionbox, title={Prerrequisitos (compilación directa)}]
+\begin{lstlisting}[style=bashstyle]
+%%bash
+apt-get update -qq
+apt-get install -y cmake build-essential \
+  libfftw3-dev libopenmpi-dev \
+  openmpi-bin wget -qq
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[formulabox, title={Opción 2: compilar en Colab (\textasciitilde{}10 min)}]
+\begin{lstlisting}[style=bashstyle]
+%%bash
+wget -q https://ftp.gromacs.org/gromacs/gromacs-2024.2.tar.gz
+tar -xzf gromacs-2024.2.tar.gz
+cd gromacs-2024.2 && mkdir build && cd build
+cmake .. \
+  -DGMX_BUILD_OWN_FFTW=ON \
+  -DGMX_GPU=OFF \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DCMAKE_BUILD_TYPE=Release
+make -j4 -s && make install -s
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\begin{lstlisting}[style=bashstyle]
+# Celda Python: integrar con subprocesos
+import subprocess, os
+os.environ['PATH'] += \
+  ':/usr/local/gromacs/bin'
+r = subprocess.run(
+  ['gmx', '--version'],
+  capture_output=True, text=True)
+print(r.stdout.split('\n')[1])
+\end{lstlisting}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Tutorial GROMACS: Dinámica de Lisozima}
+%==============================================================================
+
+%------------------------------------------------------------------------------
+\begin{frame}{Tutorial: Simulación de Lisozima con GROMACS}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Sistema}
+  \begin{itemize}\small
+    \item \textbf{Proteína}: Lisozima (1AKI, 129 residuos)
+    \item \textbf{Campo de fuerzas}: AMBER99SB-ILDN
+    \item \textbf{Solvente}: TIP3P, caja dodecaédrica
+    \item \textbf{Iones}: Na$^+$/Cl$^-$ (neutralización + 0.15\,M)
+    \item \textbf{Temperatura}: 300\,K \quad \textbf{Presión}: 1\,bar
+    \item \textbf{Producción}: 1\,ns ($\Delta t = 2$\,fs, 500\,000 pasos)
+  \end{itemize}
+\end{block}
+\column{0.48\textwidth}
+\begin{block}{Protocolo de 8 pasos}
+  \begin{enumerate}\small
+    \item[\textbf{1.}] \textbf{pdb2gmx}: topología + parámetros FF
+    \item[\textbf{2.}] \textbf{editconf + solvate}: caja + agua
+    \item[\textbf{3.}] \textbf{genion}: iones + neutralización
+    \item[\textbf{4.}] \textbf{EM}: minimización (steepest descent)
+    \item[\textbf{5.}] \textbf{NVT eq.}: 100\,ps a $T$ constante
+    \item[\textbf{6.}] \textbf{NPT eq.}: 100\,ps a $T$, $P$ constantes
+    \item[\textbf{7.}] \textbf{MD}: producción 1\,ns
+    \item[\textbf{8.}] \textbf{Análisis}: RMSD, RMSF, $R_g$\ldots
+  \end{enumerate}
+\end{block}
+\end{columns}
+\vspace{0.3em}
+\begin{tcolorbox}[comparisonbox]
+  \centering\small
+  Ref: Lemkul JA (2019) \textit{J.\,Phys.\,Chem.\,B} 123:6254 \quad
+  \texttt{tutorials.gromacs.org} \quad GROMACS 2023
+\end{tcolorbox}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile]{Pasos 1--2: Preparación del PDB y Solvatación}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={1. Obtener y limpiar PDB}]
+\begin{lstlisting}[style=bashstyle]
+# Descargar lisozima de RCSB
+wget https://files.rcsb.org/download/1AKI.pdb
+# Eliminar agua cristalografica
+grep -v HOH 1AKI.pdb > 1AKI_clean.pdb
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={2. Generar topologia (FF + agua)}]
+\begin{lstlisting}[style=bashstyle]
+gmx pdb2gmx -f 1AKI_clean.pdb \
+  -o protein.gro -water tip3p \
+  -ff amber99sb-ildn
+# Genera: topol.top, posre.itp, protein.gro
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[definitionbox, title={3. Caja dodecaedrica (1 nm margen)}]
+\begin{lstlisting}[style=bashstyle]
+gmx editconf -f protein.gro \
+  -o boxed.gro -c -d 1.0 \
+  -bt dodecahedron
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={4. Solvatacion con TIP3P}]
+\begin{lstlisting}[style=bashstyle]
+gmx solvate -cp boxed.gro \
+  -cs spc216.gro \
+  -o solvated.gro -p topol.top
+# Actualiza topol.top: agrega SOL
+\end{lstlisting}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=2]{Paso 3--4: Iones y Minimizacion de Energia}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={3. Anadir iones (neutralizar)}]
+\begin{lstlisting}[style=bashstyle]
+# ions.mdp: integrator=steep, nsteps=0
+gmx grompp -f ions.mdp \
+  -c solvated.gro -p topol.top \
+  -o ions.tpr -maxwarn 1
+echo "SOL" | gmx genion \
+  -s ions.tpr -o system.gro \
+  -p topol.top -pname NA \
+  -nname CL -neutral -conc 0.15
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[warningbox, title={4. minim.mdp (puntos clave)}]
+\begin{lstlisting}[style=mdpstyle]
+integrator   = steep
+emtol        = 1000.0   ; kJ/mol/nm
+emstep       = 0.01     ; nm
+nsteps       = 50000
+nstlist      = 1
+cutoff-scheme = Verlet
+coulombtype  = PME
+rcoulomb     = 1.0
+rvdw         = 1.0
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Ejecutar EM}]
+\begin{lstlisting}[style=bashstyle]
+gmx grompp -f minim.mdp \
+  -c system.gro -p topol.top -o em.tpr
+gmx mdrun -v -deffnm em
+# Verificar: Epot debe ser negativo
+echo "Potential" | gmx energy \
+  -f em.edr -o potential.xvg
+\end{lstlisting}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=3]{Paso 5: Equilibracion NVT (100 ps)}
+\begin{columns}[T]
+\column{0.51\textwidth}
+\begin{tcolorbox}[warningbox, title={nvt.mdp --- parametros clave}]
+\begin{lstlisting}[style=mdpstyle]
+integrator  = md
+dt          = 0.002      ; 2 fs
+nsteps      = 50000      ; 100 ps
+nstxout-compressed = 500 ; cada 1 ps
+; Restricciones de enlaces H
+constraints         = h-bonds
+constraint-algorithm = lincs
+; Termostato V-rescale
+tcoupl    = V-rescale
+tc-grps   = Protein Non-Protein
+tau-t     = 0.1  0.1     ; ps
+ref-t     = 300  300     ; K
+; Electrostatos
+coulombtype  = PME
+rcoulomb     = 1.0
+rvdw         = 1.0
+DispCorr     = EnerPres
+; Restricciones de posicion
+define    = -DPOSRES
+; Velocidades iniciales
+gen-vel   = yes
+gen-temp  = 300
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.46\textwidth}
+\begin{tcolorbox}[definitionbox, title={Ejecutar NVT}]
+\begin{lstlisting}[style=bashstyle]
+gmx grompp -f nvt.mdp \
+  -c em.gro -r em.gro \
+  -p topol.top -o nvt.tpr
+gmx mdrun -v -deffnm nvt
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Verificar temperatura}]
+\begin{lstlisting}[style=bashstyle]
+echo "Temperature" | gmx energy \
+  -f nvt.edr -o temperature.xvg
+xmgrace temperature.xvg
+# Debe estabilizarse en ~300 K
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small\textbf{Nota}: \texttt{-DPOSRES} mantiene la
+proteina fija durante la equilibracion
+termica para evitar distorsiones
+estructurales iniciales.
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=3]{Pasos 6--7: Equilibracion NPT y Produccion}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[warningbox, title={npt.mdp (cambios vs nvt.mdp)}]
+\begin{lstlisting}[style=mdpstyle]
+; Barostato Parrinello-Rahman
+pcoupl         = Parrinello-Rahman
+pcoupltype     = isotropic
+tau-p          = 2.0     ; ps
+ref-p          = 1.0     ; bar
+compressibility = 4.5e-5 ; bar^-1
+; NO generar velocidades nuevas
+gen-vel   = no
+\end{lstlisting}
+\end{tcolorbox}
+\begin{lstlisting}[style=bashstyle]
+gmx grompp -f npt.mdp -c nvt.gro \
+  -r nvt.gro -t nvt.cpt \
+  -p topol.top -o npt.tpr
+gmx mdrun -v -deffnm npt
+echo "Pressure" | gmx energy \
+  -f npt.edr -o pressure.xvg
+echo "Density" | gmx energy \
+  -f npt.edr -o density.xvg
+\end{lstlisting}
+\column{0.47\textwidth}
+\begin{tcolorbox}[formulabox, title={md.mdp --- produccion 1 ns}]
+\begin{lstlisting}[style=mdpstyle]
+integrator  = md
+dt          = 0.002
+nsteps      = 500000     ; 1 ns
+; Sin restricciones de posicion
+; (eliminar -DPOSRES)
+nstxout-compressed = 500
+nstlog      = 500
+nstenergy   = 500
+; Continuar desde NPT
+gen-vel   = no
+\end{lstlisting}
+\end{tcolorbox}
+\begin{lstlisting}[style=bashstyle]
+gmx grompp -f md.mdp -c npt.gro \
+  -t npt.cpt -p topol.top -o md.tpr
+# Produccion (~4 h en 4 cores)
+gmx mdrun -v -deffnm md \
+  -ntmpi 1 -ntomp 4
+\end{lstlisting}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile]{Analisis I: RMSD, RMSF y Energia}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={RMSD del backbone}]
+\begin{lstlisting}[style=bashstyle]
+# Grupo 4 = backbone (C, CA, N)
+echo "4 4" | gmx rms \
+  -s md.tpr -f md.xtc \
+  -o rmsd.xvg -tu ns
+xmgrace rmsd.xvg
+# Valor esperado: 0.1-0.3 nm
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={RMSF por residuo}]
+\begin{lstlisting}[style=bashstyle]
+echo "4" | gmx rmsf \
+  -s md.tpr -f md.xtc \
+  -o rmsf.xvg -res
+# Picos = loops flexibles
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[definitionbox, title={Energia, temperatura, presion}]
+\begin{lstlisting}[style=bashstyle]
+echo "Potential" | gmx energy \
+  -f md.edr -o energy.xvg
+echo "Temperature" | gmx energy \
+  -f md.edr -o temp.xvg
+echo "Pressure" | gmx energy \
+  -f md.edr -o pres.xvg
+echo "Density" | gmx energy \
+  -f md.edr -o density.xvg
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small
+\textbf{Valores de referencia}\\
+\textbf{RMSD}: 0.1--0.3\,nm (estable)\\
+\textbf{T}: $300 \pm 5$\,K\\
+\textbf{P}: $1 \pm 100$\,bar\\
+\textbf{$\rho$}: $\approx 1000$\,kg/m$^3$
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=16]{Analisis II: $R_g$, H-bonds, SASA y Clustering}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={Radio de giro ($R_g$)}]
+\begin{lstlisting}[style=bashstyle]
+echo "1" | gmx gyrate \
+  -s md.tpr -f md.xtc \
+  -o gyrate.xvg
+# Rg constante = estructura compacta
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Puentes de hidrogeno}]
+\begin{lstlisting}[style=bashstyle]
+# H-bonds intraproteina
+echo "1 1" | gmx hbond \
+  -s md.tpr -f md.xtc \
+  -num hbnum_prot.xvg
+# H-bonds proteina-agua
+echo "1 12" | gmx hbond \
+  -s md.tpr -f md.xtc \
+  -num hbnum_wat.xvg
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[definitionbox, title={SASA (superficie accesible)}]
+\begin{lstlisting}[style=bashstyle]
+echo "1" | gmx sasa \
+  -s md.tpr -f md.xtc \
+  -o sasa.xvg -probe 0.14
+# probe = radio agua (0.14 nm)
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Clustering de conformaciones}]
+\begin{lstlisting}[style=bashstyle]
+echo "4 4" | gmx cluster \
+  -s md.tpr -f md.xtc \
+  -method gromos -cutoff 0.2 \
+  -cl clusters.pdb \
+  -clndx cluster.ndx
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[warningbox, title={Visualizacion con VMD/PyMOL}]
+\begin{lstlisting}[style=bashstyle]
+gmx trjconv -f md.xtc -s md.tpr \
+  -o traj_vis.pdb -dt 100 -pbc mol
+\end{lstlisting}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Tutorial 2: Complejo Proteína-Ligando}
+%==============================================================================
+
+%------------------------------------------------------------------------------
+\begin{frame}{Tutorial 2: MD de un Complejo Proteína-Ligando}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{Sistema}
+  \begin{itemize}\small
+    \item \textbf{Proteína}: T4 Lisozima L99A (PDB: 3HTB, 162 res.)
+    \item \textbf{Ligando}: JZ4 (benzimidazol-2-ona, \ch{C7H6N2O})
+    \item \textbf{Campo de fuerzas}: AMBER99SB-ILDN + GAFF2
+    \item \textbf{Solvente}: TIP3P, caja cúbica
+    \item \textbf{Iones}: Na$^+$/Cl$^-$ a 0.15\,M
+    \item \textbf{Producción}: 100\,ns ($\Delta t = 2$\,fs)
+  \end{itemize}
+\end{block}
+\column{0.48\textwidth}
+\begin{block}{Flujo de trabajo}
+  \begin{enumerate}\small
+    \item[\textbf{1.}] Preparar PDB y separar ligando
+    \item[\textbf{2.}] Parametrizar ligando (ACPYPE/GAFF2)
+    \item[\textbf{3.}] Combinar topologías proteína + ligando
+    \item[\textbf{4.}] Caja, solvatación e iones
+    \item[\textbf{5.}] EM, equilibración NVT y NPT
+    \item[\textbf{6.}] Producción MD
+    \item[\textbf{7.}] Análisis: RMSD, contactos, MM-PBSA
+  \end{enumerate}
+\end{block}
+\end{columns}
+\vspace{0.3em}
+\begin{tcolorbox}[comparisonbox]
+\centering\small
+Ref: Lemkul JA (2014) \textit{GROMACS Tutorial: Protein--Ligand Complex} \quad
+Ligando JZ4 = sitio hidrofóbico de T4 lisozima L99A \quad \texttt{www.mdtutorials.com}
+\end{tcolorbox}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=5]{Pasos 1--2: Preparación y Parametrización del Ligando}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{tcolorbox}[definitionbox, title={1. Obtener PDB y separar ligando}]
+\begin{lstlisting}[style=bashstyle]
+# Descargar complejo cristalografico
+wget https://files.rcsb.org/download/3HTB.pdb
+# Extraer proteina (solo ATOM)
+grep "^ATOM" 3HTB.pdb > protein.pdb
+# Extraer ligando JZ4
+grep "^HETATM" 3HTB.pdb | \
+  grep " JZ4 " > jz4.pdb
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[warningbox, title={2. Instalar ACPYPE y AmberTools}]
+\begin{lstlisting}[style=bashstyle]
+# Via conda-forge (recomendado)
+conda install -c conda-forge \
+  acpype ambertools openbabel -y
+# Via pip
+pip install acpype
+# Verificar
+acpype --version
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.48\textwidth}
+\begin{tcolorbox}[formulabox, title={3. Generar parámetros GAFF2 (ACPYPE)}]
+\begin{lstlisting}[style=bashstyle]
+# Convertir PDB a MOL2 (asigna H)
+obabel jz4.pdb -O jz4.mol2 -h
+# Parametrizar con cargas AM1-BCC
+# y campo de fuerzas GAFF2
+acpype -i jz4.mol2 -c bcc -a gaff2 -n 0
+# -n 0 = carga neta del ligando
+# Archivos generados en jz4.acpype/:
+#   jz4_GMX.itp  (parametros GROMACS)
+#   jz4_GMX.gro  (coordenadas)
+#   jz4_GMX.top  (topologia)
+ls jz4.acpype/
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small\textbf{Cargas AM1-BCC}: rápidas y adecuadas para MD.\\
+\textbf{Mayor precisión}: RESP con GAUSSIAN/ORCA + Multiwfn.\\
+\textbf{Alternativa}: CGenFF (CHARMM-GUI) para ff CHARMM.
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=5]{Paso 3: Topología del Complejo}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={3a. Topología de la proteína}]
+\begin{lstlisting}[style=bashstyle]
+gmx pdb2gmx -f protein.pdb \
+  -o protein.gro -water tip3p \
+  -ff amber99sb-ildn -ignh
+# Genera: topol.top, posre.itp, protein.gro
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{0.3em}
+\begin{tcolorbox}[warningbox, title={3c. Editar topol.top (añadir ligando)}]
+\begin{lstlisting}[style=mdpstyle]
+; Agregar antes de [ system ]
+#include "jz4.acpype/jz4_GMX.itp"
+; Posicion restraints del ligando
+#ifdef POSRES_LIG
+#include "posre_jz4.itp"
+#endif
+; Actualizar [ molecules ]
+Protein_chain_A   1
+JZ4               1
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[formulabox, title={3b. Combinar coordenadas}]
+\begin{lstlisting}[style=bashstyle]
+# Copiar .gro del ligando
+cp jz4.acpype/jz4_GMX.gro jz4.gro
+# Combinar proteina + ligando
+# (ajustar natoms en la cabecera)
+python3 << 'EOF'
+with open('protein.gro') as f: p=f.readlines()
+with open('jz4.gro') as f: l=f.readlines()
+n = int(p[1]) + int(l[1])
+with open('complex.gro','w') as out:
+  out.write('Complex protlig\n')
+  out.write(f'{n}\n')
+  out.writelines(p[2:-1])
+  out.writelines(l[2:-1])
+  out.write(p[-1])
+EOF
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small\textbf{Orden en topol.top}: el \texttt{\#include} del ligando
+debe ir \textbf{antes} de \texttt{[ system ]}. El orden en \texttt{[ molecules ]}
+debe coincidir exactamente con \texttt{complex.gro}.
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=5]{Pasos 4--5: Sistema, Minimización y Equilibración}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={4. Caja, solvatación e iones}]
+\begin{lstlisting}[style=bashstyle]
+# Caja cubica, margen 1.2 nm
+gmx editconf -f complex.gro \
+  -o boxed.gro -c -d 1.2 -bt cubic
+# Solvatar con TIP3P
+gmx solvate -cp boxed.gro \
+  -cs spc216.gro \
+  -o solvated.gro -p topol.top
+# Agregar iones (0.15 M NaCl)
+gmx grompp -f ions.mdp \
+  -c solvated.gro -p topol.top \
+  -o ions.tpr -maxwarn 2
+echo "SOL" | gmx genion \
+  -s ions.tpr -o system.gro \
+  -p topol.top -pname NA \
+  -nname CL -neutral -conc 0.15
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[formulabox, title={5. EM, NVT y NPT}]
+\begin{lstlisting}[style=bashstyle]
+# Minimizacion de energia
+gmx grompp -f minim.mdp \
+  -c system.gro -p topol.top -o em.tpr
+gmx mdrun -v -deffnm em
+# Equilibracion NVT 100 ps
+gmx grompp -f nvt.mdp \
+  -c em.gro -r em.gro \
+  -p topol.top -o nvt.tpr
+gmx mdrun -v -deffnm nvt
+# Equilibracion NPT 100 ps
+gmx grompp -f npt.mdp \
+  -c nvt.gro -r nvt.gro \
+  -t nvt.cpt -p topol.top -o npt.tpr
+gmx mdrun -v -deffnm npt
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[warningbox, title={Restricciones del ligando}]
+\begin{lstlisting}[style=bashstyle]
+# Generar posre para el ligando
+gmx genrestr -f jz4_GMX.gro \
+  -o posre_jz4.itp \
+  -fc 1000 1000 1000
+\end{lstlisting}
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[fragile,shrink=5]{Análisis del Complejo Proteína-Ligando}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={RMSD proteína y ligando}]
+\begin{lstlisting}[style=bashstyle]
+# Crear grupo para el ligando
+gmx make_ndx -f md.tpr -o index.ndx
+# Dentro de make_ndx:
+# > r JZ4    (selecciona residuo JZ4)
+# > name X JZ4_lig
+# > q
+# RMSD backbone proteina
+echo "4 4" | gmx rms -s md.tpr \
+  -f md.xtc -o rmsd_prot.xvg -tu ns
+# RMSD ligando
+echo "JZ4_lig JZ4_lig" | gmx rms \
+  -s md.tpr -f md.xtc \
+  -n index.ndx -o rmsd_lig.xvg -tu ns
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Distancia y contactos}]
+\begin{lstlisting}[style=bashstyle]
+# Distancia minima proteina-ligando
+echo "1 JZ4_lig" | gmx mindist \
+  -s md.tpr -f md.xtc \
+  -n index.ndx -od mindist.xvg
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[warningbox, title={Energía libre: MM-PBSA}]
+\begin{lstlisting}[style=bashstyle]
+# Instalar gmx_MMPBSA
+conda install -c conda-forge \
+  gmx_mmpbsa ambertools -y
+# input file mmpbsa.in
+# &general startframe=1, endframe=500,
+#   interval=5, verbose=2, /
+# Ejecutar MM-PBSA
+gmx_MMPBSA -O -i mmpbsa.in \
+  -cs md.tpr -ct md.xtc \
+  -ci index.ndx -cg 1 JZ4_lig \
+  -cp topol.top \
+  -o FINAL_RESULTS.dat
+# Visualizar resultados
+gmx_MMPBSA_ana -f FINAL_RESULTS.dat
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small
+$\Delta G_{bind}$ negativo $\rightarrow$ unión estable.\\Valores típicos para inhibidores:\\$\Delta G_{bind} \approx -20$ a $-60$\,kJ/mol.\\\textbf{Descomposición por residuos} identifica\\los hotspots del sitio de unión.
+\end{tcolorbox}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+\begin{frame}[plain]
+\begin{center}
+{\Large\bfseries\color{DarkBlue} ¡Gracias!}\\[0.8em]
+{\large\color{SubtitleColor} Dinámica Molecular: Principios, Métodos y Aplicaciones}\\[1.2em]
+
+\begin{tikzpicture}[scale=1.0]
+\foreach \x/\y/\c in {
+  0/0/PastelBlue, 1.5/0.4/PastelGreen, 0.7/1.2/PastelPurple,
+  2.5/0.9/PastelOrange, 2.0/1.8/PastelTeal, 3.5/0.2/PastelRed,
+  3.8/1.4/PastelYellow, 0.3/2.2/PastelBlue!60, 4.5/0.8/PastelGreen!60}{
+  \node[circle, fill=\c, draw=DarkBlue!40, minimum size=16pt] at (\x,\y) {};
+}
+\draw[->, thick, DarkBlue!70] (0,0) -- (0.5, 0.4);
+\draw[->, thick, DarkGreen!70] (1.5,0.4) -- (1.0, 0.9);
+\draw[->, thick, DarkPurple!70] (0.7,1.2) -- (1.2, 1.5);
+\draw[->, thick, DarkBlue!50] (2.5,0.9) -- (3.1, 0.7);
+\end{tikzpicture}\\[1em]
+
+\begin{tcolorbox}[comparisonbox, width=10cm]
+\centering\small
+\textbf{Prof. José Mauricio Rodas Rodríguez}\\
+Universidad de Caldas --- Departamento de Química\\
+\textit{Introducción a la Química Computacional (173G7G)}
+\end{tcolorbox}
+\end{center}
+\end{frame}
+
+%==============================================================================
+\end{document}
+%==============================================================================

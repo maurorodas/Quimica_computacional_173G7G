@@ -1,0 +1,52 @@
+\frametitle{Análisis del Complejo Proteína-Ligando}
+\begin{columns}[T]
+\column{0.50\textwidth}
+\begin{tcolorbox}[definitionbox, title={RMSD proteína y ligando}]
+\begin{lstlisting}[style=bashstyle]
+# Crear grupo para el ligando
+gmx make_ndx -f md.tpr -o index.ndx
+# Dentro de make_ndx:
+# > r JZ4    (selecciona residuo JZ4)
+# > name X JZ4_lig
+# > q
+# RMSD backbone proteina
+echo "4 4" | gmx rms -s md.tpr \
+  -f md.xtc -o rmsd_prot.xvg -tu ns
+# RMSD ligando
+echo "JZ4_lig JZ4_lig" | gmx rms \
+  -s md.tpr -f md.xtc \
+  -n index.ndx -o rmsd_lig.xvg -tu ns
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[definitionbox, title={Distancia y contactos}]
+\begin{lstlisting}[style=bashstyle]
+# Distancia minima proteina-ligando
+echo "1 JZ4_lig" | gmx mindist \
+  -s md.tpr -f md.xtc \
+  -n index.ndx -od mindist.xvg
+\end{lstlisting}
+\end{tcolorbox}
+\column{0.47\textwidth}
+\begin{tcolorbox}[warningbox, title={Energía libre: MM-PBSA}]
+\begin{lstlisting}[style=bashstyle]
+# Instalar gmx_MMPBSA
+conda install -c conda-forge \
+  gmx_mmpbsa ambertools -y
+# input file mmpbsa.in
+# &general startframe=1, endframe=500,
+#   interval=5, verbose=2, /
+# Ejecutar MM-PBSA
+gmx_MMPBSA -O -i mmpbsa.in \
+  -cs md.tpr -ct md.xtc \
+  -ci index.ndx -cg 1 JZ4_lig \
+  -cp topol.top \
+  -o FINAL_RESULTS.dat
+# Visualizar resultados
+gmx_MMPBSA_ana -f FINAL_RESULTS.dat
+\end{lstlisting}
+\end{tcolorbox}
+\begin{tcolorbox}[comparisonbox]
+\small
+$\Delta G_{bind}$ negativo $\rightarrow$ unión estable.\\Valores típicos para inhibidores:\\$\Delta G_{bind} \approx -20$ a $-60$\,kJ/mol.\\\textbf{Descomposición por residuos} identifica\\los hotspots del sitio de unión.
+\end{tcolorbox}
+\end{columns}

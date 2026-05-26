@@ -1,0 +1,15 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Fundamentos de Dinámica Molecular}{3}{0}{1}
+\beamer@sectionintoc {2}{Algoritmos de Integración}{7}{0}{2}
+\beamer@sectionintoc {3}{Condiciones de Contorno y Ensambles}{10}{0}{3}
+\beamer@sectionintoc {4}{Termostatos y Barostatos}{12}{0}{4}
+\beamer@sectionintoc {5}{Preparación de Sistemas}{14}{0}{5}
+\beamer@sectionintoc {6}{Campos de Fuerzas}{16}{0}{6}
+\beamer@sectionintoc {7}{Análisis de Trayectorias}{17}{0}{7}
+\beamer@sectionintoc {8}{Comparación de Programas}{19}{0}{8}
+\beamer@sectionintoc {9}{Protocolo de Simulación de Proteínas}{21}{0}{9}
+\beamer@sectionintoc {10}{Técnicas Avanzadas}{22}{0}{10}
+\beamer@sectionintoc {11}{Resumen y Perspectivas}{24}{0}{11}
+\beamer@sectionintoc {12}{Instalación de GROMACS}{26}{0}{12}
+\beamer@sectionintoc {13}{Tutorial GROMACS: Dinámica de Lisozima}{28}{0}{13}
+\beamer@sectionintoc {14}{Tutorial 2: Complejo Proteína-Ligando}{35}{0}{14}
